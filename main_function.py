@@ -67,7 +67,7 @@ def pixel_record_666(input_path, r_s, bkg, mode = False, frame_interval = 25):
 
                 # 获取需要分析的位置范围和需要剪去的噪音
                 patch_tree_target = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
-                patch_tree_bkg = frame[bkg[0]:bkg[1],bkg[2]:bkg[3],:]
+                # patch_tree_bkg = frame[bkg[0]:bkg[1],bkg[2]:bkg[3],:]
 
 
 
@@ -81,17 +81,23 @@ def pixel_record_666(input_path, r_s, bkg, mode = False, frame_interval = 25):
 
                 # 对范围内求平均灰度, 获得一个数
                 patch_tree_ave = np.mean(patch_tree_target)
-                patch_tree_bkg_ave = np.mean(patch_tree_bkg)
+                # patch_tree_bkg_ave = np.mean(patch_tree_bkg)
 
                 # 将ave和bkg的值相减, 以去掉背景噪音的影响
-                patch_tree_ave_r = patch_tree_ave - patch_tree_bkg_ave
+                # patch_tree_ave_r = patch_tree_ave - patch_tree_bkg_ave
 
+                # # RGB值判断
+                # if patch_tree_ave < 220:
+                #     patch_trees.append(1)
+                # else:
+                #     patch_trees.append(0)
                 # 递交结果
-                patch_trees.append(patch_tree_ave_r)
+                patch_trees.append(patch_tree_ave)
 
 
     print('patch_trees的长度为: ', len(patch_trees))
-
+    patch_trees_nda = np.array(patch_trees)
+    patch_trees_nda_judge = patch_trees_nda < 100
 
     # 调用def_baggage_666中的函数, 将列表存为txt文件
     # db6.text_save(patch_trees, 'result.txt')
@@ -101,6 +107,7 @@ def pixel_record_666(input_path, r_s, bkg, mode = False, frame_interval = 25):
     # 可用格式为:
     # eps, pdf, pgf, png, ps, raw, rgba, svg, svgz
     db6.painting_trees(patch_trees,'result.eps')
+    db6.painting_trees(patch_trees_nda_judge,'result_judge.eps')
 
     # 执行结束释放资源
     # 这一步依旧会报错: 'Segmentation fault: 11'
