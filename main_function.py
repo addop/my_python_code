@@ -8,7 +8,7 @@ import copy
 import def_baggage_666 as db6
 
 # 视频分析
-def pixel_record_666(input_path, r_s, bkg, mode = False, frame_interval = 25):
+def pixel_record_666(input_path, r_s, mode = False, frame_interval = 25):
     # 列出文件夹下所有的视频文件
     filenames = os.listdir(input_path)
 
@@ -53,6 +53,7 @@ def pixel_record_666(input_path, r_s, bkg, mode = False, frame_interval = 25):
 
         # 新建存储列表
         patch_trees = []
+        patch_trees_bkg = []
 
         for i in tqdm(range(int(n_frames))):
 
@@ -65,9 +66,11 @@ def pixel_record_666(input_path, r_s, bkg, mode = False, frame_interval = 25):
             # 一定要加上这句话, 否则会报错: 'Segmentation fault: 11'
             if nap == True:
 
-                # 获取需要分析的位置范围和需要剪去的噪音
+                # 获取需要分析的位置范围
                 patch_tree_target = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
-                # patch_tree_bkg = frame[bkg[0]:bkg[1],bkg[2]:bkg[3],:]
+
+                # 获取分析位点下30个像素点作为参考
+                patch_tree_bkg = frame[(r_s[0]+10):(r_s[1]+10),r_s[2]:r_s[3],:]
 
 
 
@@ -79,37 +82,68 @@ def pixel_record_666(input_path, r_s, bkg, mode = False, frame_interval = 25):
                 #         print('exported {}!'.format(imagepath))
                 #         cv2.imwrite(imagepath, frame)
 
-                # 对范围内求平均灰度, 获得一个数
+                # 对目标范围内求平均灰度, 获得一个数
                 patch_tree_ave = np.mean(patch_tree_target)
-                # patch_tree_bkg_ave = np.mean(patch_tree_bkg)
 
-                # 将ave和bkg的值相减, 以去掉背景噪音的影响
-                # patch_tree_ave_r = patch_tree_ave - patch_tree_bkg_ave
+                # 对参考范围求平均灰度, 获得一个数
+                patch_tree_bkg_ave = np.mean(patch_tree_bkg)
 
-                # # RGB值判断
-                # if patch_tree_ave < 220:
-                #     patch_trees.append(1)
-                # else:
-                #     patch_trees.append(0)
                 # 递交结果
                 patch_trees.append(patch_tree_ave)
+                patch_trees_bkg.append(patch_tree_bkg_ave)
+            else:
+                # 将假帧补为255 使得最终结果长度与视频总帧数一致
+                patch_trees.append(255)
+                patch_trees_bkg.append(255)
 
 
     print('patch_trees的长度为: ', len(patch_trees))
-    patch_trees_nda = np.array(patch_trees)
-    patch_trees_nda_judge = patch_trees_nda < 100
 
-    # 调用def_baggage_666中的函数, 将列表存为txt文件
-    # db6.text_save(patch_trees, 'result.txt')
+    # 将结果从列表变成矩阵
+    patch_trees_nda = np.array(patch_trees)
+    patch_trees_bkg_nda = np.array(patch_trees_bkg)
+
+    # 获取用来判断是否甩舌头的threshold, 设为bkg的最小值的0.9倍
+    threshold = np.min(patch_trees_bkg_nda)*0.9  # 这里0.9是我拍脑袋想出来的
+
+    # 对patch_trees_nda做矩阵判断, 获得bool值矩阵
+    patch_trees_nda_judge = patch_trees_nda < threshold
+
+    # NB: 获得True的段数, 并打印出来
+    count_True = 0
+    for num in range(len(patch_trees_nda_judge)-1):
+        if patch_trees_nda_judge[num] == False and patch_trees_nda_judge[num+1] == True:
+            count_True = count_True + 1
+    print('True的段数为: ',np.count_nonzero(patch_trees_nda_judge))
+
+    # 调用def_baggage_666中的函数, 将列表存为csv文件
     db6.text_save_fnda(patch_trees, 'result.csv')
+    db6.text_save_fnda(patch_trees_bkg, 'result_bkg.csv')
+    db6.text_save_fnda(patch_trees_nda_judge, 'result_judge.csv')
 
     # 调用def_baggage_666中的函数, 绘制图片并保存指定格式和文件名
     # 可用格式为:
     # eps, pdf, pgf, png, ps, raw, rgba, svg, svgz
     db6.painting_trees(patch_trees,'result.eps')
+    db6.painting_trees(patch_trees_bkg,'result_bkg.eps')
     db6.painting_trees(patch_trees_nda_judge,'result_judge.eps')
 
     # 执行结束释放资源
     # 这一步依旧会报错: 'Segmentation fault: 11'
     # 但不管了反正东西都拿到了
     cap.release()
+
+    # 返回帧数供日后调用
+    return(n_frames)
+
+
+# 对pixel_record_666的进一步分析
+def record_ana(filePath_target, filePath_bkg)
+
+    target_pd = pd.read_csv(filePath_target)
+    bkg_pd = pd.read_csv(filePath_bkg)
+
+    target_a = np.array(target_pd)
+    bkg_a = np.array(bkg_pd)
+
+    pass
