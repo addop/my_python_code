@@ -11,7 +11,9 @@ input_path = '/Users/zhenghao/Desktop/Chew_threshold_ana/idea/yuqingpeng/video'
 # 284 442 ->268 441
 rectangle_scope = np.array([446,448,273,275])
 
-m_frame = mf.pixel_record_666(input_path, rectangle_scope)
+# m_frame = mf.pixel_record_666(input_path, rectangle_scope)
+# m_frame = mf.pixel_record_1(input_path, rectangle_scope, mode = True)
+m_frame = mf.pixel_record_2(input_path, rectangle_scope)
 
 # [x] 需要找到范围判定
 # REVIEW 笔记:

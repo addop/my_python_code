@@ -50,3 +50,14 @@ def eye_csv_read(filePath, video_len):
         df_nda[int(item),1] = 1
     # 函数返回矩阵
     return(df_nda)
+
+def second2minsec(nda):
+    import time
+    if len(np.shape(nda)) == 1:
+        a = []
+        for index in range(len(nda)):
+            a.append(time.strftime('%H:%M:%S', time.gmtime(nda[index])))
+        print('时间转换完毕, 请将结果转换为list保存成csv')
+    else:
+        print('提供给 second2minsec 的矩阵只能是一维, 请更改后使用')
+    return(a)
