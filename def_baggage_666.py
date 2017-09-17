@@ -4,10 +4,10 @@ import pandas as pd
 import numpy as np
 
 def painting_trees(list_result,filename):
-    plt.figure(figsize=(500,50))
+    plt.figure(figsize=(100,10))
     plt.plot(list_result, 'k')
-    plt.savefig(filename, dpi = 100, bbox_inches = 'tight')
-    print('图像保存完毕')
+    plt.savefig(filename, dpi = 50, bbox_inches = 'tight')
+    print('图像保存完毕: ', filename)
 
 
 # 将列表保存成txt文件
@@ -19,7 +19,7 @@ def text_save(content,filename,mode='a'):
     for i in tqdm(range(len(content))):
         file.write(str(content[i])+'\n')
     file.close()
-    print('txt saving good')
+    print('txt saving good: ',filename)
     return()
 
 # 将列表保存成csv文件
@@ -30,7 +30,7 @@ def text_save_fnda(content,filename):
     a[:,0] = np.array(range(len(content)))
     a[:,1] = np.array(content)
     np.savetxt(filename, a, delimiter=",")
-    print('txt saving good')
+    print('txt saving good: ', filename)
     return()
 
 def eye_csv_read(filePath, video_len):
