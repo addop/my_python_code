@@ -9,7 +9,7 @@ input_path = '/Users/zhenghao/Desktop/Chew_threshold_ana/idea/yuqingpeng/video'
 # 软件截图后, 在'预览'中打开并圈出对应区域的两个顶点
 # 例如:
 # 284 442 ->268 441
-rectangle_scope = np.array([446,448,273,275])
+rectangle_scope = np.array([444,447,271,274])
 
 # m_frame = mf.pixel_record_666(input_path, rectangle_scope)
 # m_frame = mf.pixel_record_1(input_path, rectangle_scope, mode = True)

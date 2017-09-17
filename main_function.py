@@ -243,13 +243,13 @@ def record_ana(filePath_target, filePath_bkg, mode = 'Normal'):
 
     if mode == 'Normal':
         # 获取用来判断是否甩舌头的threshold, 设为bkg的最小值的0.9倍
-        threshold = np.min(bkg_a[:,1])  # 这里0.9是我拍脑袋想出来的
+        threshold = np.min(bkg_a[:,1])
         # 对patch_trees_nda做矩阵判断, 获得bool值矩阵
         target_a_judge = target_a[:,1] < threshold
 
     elif mode == 'Cut':
         target_a_token = target_a[:,1] - bkg_a[:,1]
-        threshold = np.min(bkg_a[:,1])*0.9
+        threshold = np.min(bkg_a[:,1])*0.95 # 这里0.95是我拍脑袋想出来的
         target_a_judge = target_a_token < threshold
 
     # NB: 获得True的段数, 并打印出来
@@ -284,6 +284,10 @@ def pixel_record_2(input_path, r_s):
     frame_path = '{}_frames'.format(input_path)
     if not os.path.exists(frame_path):
         os.mkdir(frame_path)
+    # 建立一个新的文件夹, 用来装漏网之鱼
+    frame_path_escaped = '{}_escaped'.format(input_path)
+    if not os.path.exists(frame_path_escaped):
+        os.mkdir(frame_path_escaped)
 
     # 初始化一个VideoCapture对象
     cap = cv2.VideoCapture()
@@ -306,6 +310,7 @@ def pixel_record_2(input_path, r_s):
         nap,frame = cap.read()
         if nap == True:
             print('获得视频nda基本信息: ', np.shape(frame))
+            # 保存第一帧的图片
             imagename = 'start.jpg'.format(video_prefix, filename.split('.')[0])
             imagepath = os.sep.join([frame_path, imagename])
             print('exported {}!'.format(imagepath))
@@ -339,7 +344,7 @@ def pixel_record_2(input_path, r_s):
                 # 获取需要分析的位置范围
                 patch_tree_target = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
 
-                # 获取分析位点下30个像素点作为参考
+                # 获取分析位点下15个像素点作为参考
                 patch_tree_bkg = frame[(r_s[0]+15):(r_s[1]+15),r_s[2]:r_s[3],:]
 
                 # 对目标范围内求平均灰度, 获得一个数
@@ -349,9 +354,14 @@ def pixel_record_2(input_path, r_s):
                 patch_tree_bkg_ave = np.mean(patch_tree_bkg)
 
                 # REVIEW 判断是否小于threshold, 保存所有小于threshold的图片
-                if patch_tree_ave < patch_tree_bkg_ave * 0.9:
+                if patch_tree_ave < patch_tree_bkg_ave * 0.95:
                     imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
                     imagepath = os.sep.join([frame_path, imagename])
+                    print('exported {}!'.format(imagepath))
+                    cv2.imwrite(imagepath, frame)
+                else:
+                    imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
+                    imagepath = os.sep.join([frame_path_escaped, imagename])
                     print('exported {}!'.format(imagepath))
                     cv2.imwrite(imagepath, frame)
 
