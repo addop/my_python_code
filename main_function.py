@@ -233,7 +233,8 @@ def pixel_record_1(input_path, r_s, mode = False, frame_interval = 25):
     return(n_frames)
 
 # 对pixel_record_666的进一步分析
-def record_ana(filePath_target, filePath_bkg, mode = 'Normal'):
+# 201709171440 - [ ]把judge的段数判定做修改, 相邻间隔1s = 25帧以上判定为1次, 提供间距的API
+def record_ana(filePath_target, filePath_bkg, mode = 'Normal', bolt = 25):
 
     target_pd = pd.read_csv(filePath_target)
     bkg_pd = pd.read_csv(filePath_bkg)
@@ -241,12 +242,14 @@ def record_ana(filePath_target, filePath_bkg, mode = 'Normal'):
     target_a = np.array(target_pd)
     bkg_a = np.array(bkg_pd)
 
+    # threshold判断
     if mode == 'Normal':
         # 获取用来判断是否甩舌头的threshold, 设为bkg的最小值的0.9倍
         threshold = np.min(bkg_a[:,1])
         # 对patch_trees_nda做矩阵判断, 获得bool值矩阵
         target_a_judge = target_a[:,1] < threshold
 
+    # threshold判断
     elif mode == 'Cut':
         target_a_token = target_a[:,1] - bkg_a[:,1]
         threshold = np.min(bkg_a[:,1])*0.95 # 这里0.95是我拍脑袋想出来的
@@ -255,9 +258,17 @@ def record_ana(filePath_target, filePath_bkg, mode = 'Normal'):
     # NB: 获得True的段数, 并打印出来
     count_True_a = 0
     count_True_b = 0
+    count_True_b_token = 0
     for num in range(len(target_a_judge)-1):
-        if target_a_judge[num] == False and target_a_judge[num+1] == True:
-            count_True_b = count_True_b + 1
+        # 计算段数
+        if target_a_judge[num] == True and target_a_judge[num+1] == False : # 如果有data fall
+            count_True_b_token = count_True_b_token + 1 # 迭代
+            token = target_a_judge[num + 1:num + bolt + 2] == 1 # 判断之后的bolt帧是否有True的存在
+            if True in token: # 如果有True, 那之前的count_True_b_token就不算数, 重新记为0
+                count_True_b_token = 0
+            else:
+                count_True_b = count_True_b + count_True_b_token
+
         if target_a_judge[num] == True:
             count_True_a = count_True_a + 1
     print('True的段数为: ',count_True_b)
