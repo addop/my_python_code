@@ -5,6 +5,7 @@ import numpy as np
 from tqdm import tqdm
 import copy
 import pandas as pd
+import random
 
 import def_baggage_666 as db6
 
@@ -255,7 +256,7 @@ def record_ana(filePath_target, filePath_bkg, mode = 'Normal', bolt = 25):
         threshold = np.min(bkg_a[:,1])*0.95 # 这里0.95是我拍脑袋想出来的
         target_a_judge = target_a_token < threshold
 
-    # NB: 获得True的段数, 并打印出来
+    # 获得True的段数, 并打印出来
     count_True_a = 0
     count_True_b = 0
     count_True_b_token = 0
@@ -273,6 +274,49 @@ def record_ana(filePath_target, filePath_bkg, mode = 'Normal', bolt = 25):
             count_True_a = count_True_a + 1
     print('True的段数为: ',count_True_b)
     print('低于阈值的信号点次数为: ', count_True_a)
+
+    # REVIEW: 将每段舔舐开始和结束的时间导出
+    # NB[ ]为什么drink的段数有差异?
+    count_True = 0
+    count_drink_start = 0
+    count_drink_end = 0
+    count_drink_list = []
+    count_drink = 0
+    state_1 = 0
+    state_2 = 0
+
+    for num in range(len(target_a_judge)-1):
+        token = target_a_judge[num + 1:num + bolt + 2] == 1
+
+        if target_a_judge[num] == True:
+            count_True = count_True + 1
+
+        if target_a_judge[num] == False and target_a_judge[num+1] == True:
+            count_drink_start = num+1
+            state_1 = 1
+
+        if target_a_judge[num] == True and True not in token:
+            count_drink_end = num
+            state_2 = 1
+
+        if state_1 == 1 and state_2 == 1:
+            talk_list = ['我找到一对甩舌头啦!!!!', '又找到一个', '好爽, 又找到一个']
+            print(talk_list[random.randint(0,2)])
+            count_drink_list.append([count_drink_start, count_drink_end])
+            state_1 = 0
+            state_2 = 0
+            count_drink = count_drink + 1
+
+    print('测试: 重新计算的True的段数为: ',count_drink)
+    print('低于阈值的信号点次数为: ', count_True)
+
+
+
+
+
+
+
+
 
     # 调用def_baggage_666中的函数, 将列表存为csv文件
     db6.text_save_fnda(target_a_judge, 'result_judge.csv')
