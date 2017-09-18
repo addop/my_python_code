@@ -28,6 +28,9 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save = 
     cap = cv2.VideoCapture()
     # 遍历所有文件
     for filename in tqdm(filenames):
+        print('filename is: ', filename)
+        if filename == '.DS_Store':# 果然是.DS_Store的锅, 现在内存也不爆了
+            continue
         #REVIEW [X]尝试对Segmentation fault进行解决: 使用一个if
         if filename.split('.')[1] == video_form:
             filepath = os.sep.join([input_path, filename])
@@ -59,7 +62,7 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save = 
             patch_trees = []
             patch_trees_bkg = []
             # 开始分析
-            for i in tqdm(range(int(n_frames))): # 10 为测试需要, 减少导出图片时的等待时间
+            for i in tqdm(range(int(n_frames/20))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
                 # 按帧读取每一帧的RGB
                 # 例子:
                 # >>> np.shape(frame)
@@ -71,7 +74,7 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save = 
                     patch_tree_target = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
                     # 获取分析位点下15个像素点作为参考
                     # patch_tree_bkg = frame[(r_s[0]+25):(r_s[1]+25),(r_s[2]):(r_s[3]),:]
-                    patch_tree_bkg = frame[(r_s[0]):(r_s[1]),(r_s[2]-50):(r_s[3]-50),:]
+                    patch_tree_bkg = frame[(r_s[0]):(r_s[1]),(r_s[2]-200):(r_s[3]-200),:]
                     # 对目标范围内求平均灰度, 获得一个数
                     patch_tree_ave = np.mean(patch_tree_target)
                     # 对参考范围求平均灰度, 获得一个数
@@ -154,5 +157,6 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save = 
         # 将count结果保存
         csv_name_token = '{}_{}_count_drink_list.csv'.format(video_prefix, filename.split('.')[0])
         db6.text_save_fnda(count_drink_list, csv_name_token)
-
+        print('程序运行完毕')
     cap.release()# 释放内存
+    return()
