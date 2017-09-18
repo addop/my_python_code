@@ -235,7 +235,7 @@ def pixel_record_1(input_path, r_s, mode = False, frame_interval = 25):
 
 # 对pixel_record_666的进一步分析
 # 201709171440 - [ ]把judge的段数判定做修改, 相邻间隔1s = 25帧以上判定为1次, 提供间距的API
-def record_ana(filePath_target, filePath_bkg, mode = 'Normal', bolt = 25):
+def record_ana(filePath_target, filePath_bkg, mode = 'Normal', bolt = 25, threshold_condition = 0.95):
 
     target_pd = pd.read_csv(filePath_target)
     bkg_pd = pd.read_csv(filePath_bkg)
@@ -246,29 +246,27 @@ def record_ana(filePath_target, filePath_bkg, mode = 'Normal', bolt = 25):
     # threshold判断
     if mode == 'Normal':
         # 获取用来判断是否甩舌头的threshold, 设为bkg的最小值的0.9倍
-        threshold = np.min(bkg_a[:,1])
+        threshold = np.min(bkg_a[:,1])*threshold_condition
         # 对patch_trees_nda做矩阵判断, 获得bool值矩阵
         target_a_judge = target_a[:,1] < threshold
 
     # threshold判断
     elif mode == 'Cut':
         target_a_token = target_a[:,1] - bkg_a[:,1]
-        threshold = np.min(bkg_a[:,1])*0.95 # 这里0.95是我拍脑袋想出来的
+        threshold = np.min(bkg_a[:,1])*threshold_condition # 这里0.95是我拍脑袋想出来的
         target_a_judge = target_a_token < threshold
 
     # 获得True的段数, 并打印出来
     count_True_a = 0
     count_True_b = 0
     count_True_b_token = 0
+    count_test_token = []
     for num in range(len(target_a_judge)-1):
         # 计算段数
-        if target_a_judge[num] == True and target_a_judge[num+1] == False : # 如果有data fall
-            count_True_b_token = count_True_b_token + 1 # 迭代
-            token = target_a_judge[num + 1:num + bolt + 2] == 1 # 判断之后的bolt帧是否有True的存在
-            if True in token: # 如果有True, 那之前的count_True_b_token就不算数, 重新记为0
-                count_True_b_token = 0
-            else:
-                count_True_b = count_True_b + count_True_b_token
+        token = target_a_judge[num + 1:num + bolt + 1] == 1
+        if target_a_judge[num] == True and target_a_judge[num+1] == False and True  not in token:
+            count_True_b = count_True_b + 1
+            count_test_token.append(num)
 
         if target_a_judge[num] == True:
             count_True_a = count_True_a + 1
@@ -286,13 +284,14 @@ def record_ana(filePath_target, filePath_bkg, mode = 'Normal', bolt = 25):
     state_2 = 0
 
     for num in range(len(target_a_judge)-1):
-        token = target_a_judge[num + 1:num + bolt + 2] == 1
+        token = target_a_judge[num + 1:num + bolt + 1] == 1
 
         if target_a_judge[num] == True:
             count_True = count_True + 1
 
         if target_a_judge[num] == False and target_a_judge[num+1] == True:
-            count_drink_start = num+1
+            if state_1 == 0:
+                count_drink_start = num+1
             state_1 = 1
 
         if target_a_judge[num] == True and True not in token:
@@ -300,8 +299,8 @@ def record_ana(filePath_target, filePath_bkg, mode = 'Normal', bolt = 25):
             state_2 = 1
 
         if state_1 == 1 and state_2 == 1:
-            talk_list = ['我找到一对甩舌头啦!!!!', '又找到一个', '好爽, 又找到一个']
-            print(talk_list[random.randint(0,2)])
+            # talk_list = ['我找到一对甩舌头啦!!!!', '又找到一个', '好爽, 又找到一个']
+            # print(talk_list[random.randint(0,2)])
             count_drink_list.append([count_drink_start, count_drink_end])
             state_1 = 0
             state_2 = 0
@@ -317,18 +316,19 @@ def record_ana(filePath_target, filePath_bkg, mode = 'Normal', bolt = 25):
 
 
 
-
     # 调用def_baggage_666中的函数, 将列表存为csv文件
-    db6.text_save_fnda(target_a_judge, 'result_judge.csv')
+    db6.text_save_fnda(target_a_judge, 'result_test_judge.csv')
+    db6.text_save_fnda(count_test_token, 'result_test_test_judge.csv')
+    db6.text_save_fnda(count_drink_list, 'result_judge.csv')
 
     # 调用def_baggage_666中的函数, 绘制图片并保存指定格式和文件名
     # 可用格式为:
     # eps, pdf, pgf, png, ps, raw, rgba, svg, svgz
-    db6.painting_trees(target_a_judge,'result_judge.eps')
+    db6.painting_trees(target_a_judge,'result_test_judge.eps')
     return()
 
 # 分析后能够保存judge后的每一帧的图片
-def pixel_record_2(input_path, r_s):
+def pixel_record_2(input_path, r_s, figure_condition_save = 'False'):
     # 列出文件夹下所有的视频文件
     filenames = os.listdir(input_path)
 
@@ -408,17 +408,18 @@ def pixel_record_2(input_path, r_s):
                 # 对参考范围求平均灰度, 获得一个数
                 patch_tree_bkg_ave = np.mean(patch_tree_bkg)
 
-                # REVIEW 判断是否小于threshold, 保存所有小于threshold的图片
-                if patch_tree_ave < patch_tree_bkg_ave * 0.95:
-                    imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
-                    imagepath = os.sep.join([frame_path, imagename])
-                    print('exported {}!'.format(imagepath))
-                    cv2.imwrite(imagepath, frame)
-                else:
-                    imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
-                    imagepath = os.sep.join([frame_path_escaped, imagename])
-                    print('exported {}!'.format(imagepath))
-                    cv2.imwrite(imagepath, frame)
+                if figure_condition_save == True:
+                    # REVIEW 判断是否小于threshold, 保存所有小于threshold的图片
+                    if patch_tree_ave < patch_tree_bkg_ave * 0.95:
+                        imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
+                        imagepath = os.sep.join([frame_path, imagename])
+                        print('exported {}!'.format(imagepath))
+                        cv2.imwrite(imagepath, frame)
+                    else:
+                        imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
+                        imagepath = os.sep.join([frame_path_escaped, imagename])
+                        print('exported {}!'.format(imagepath))
+                        cv2.imwrite(imagepath, frame)
 
                 # 递交结果
                 patch_trees.append(patch_tree_ave)

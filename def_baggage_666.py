@@ -26,9 +26,16 @@ def text_save(content,filename,mode='a'):
 # https://docs.scipy.org/doc/numpy/reference/generated/numpy.savetxt.html
 # 其中将列表转换成了矩阵
 def text_save_fnda(content,filename):
-    a = np.empty([len(content),2])
-    a[:,0] = np.array(range(len(content)))
-    a[:,1] = np.array(content)
+    token = np.array(content)
+    size_token = np.shape(token)
+    if len(size_token) == 1:
+        a = np.empty([len(content), 2])
+        a[:,0] = np.array(range(len(content)))
+        a[:,1] = np.array(content)
+    else:
+        a = np.empty([size_token[0], size_token[1]+1])
+        a[:,0] = np.array(range(len(content)))
+        a[:,1:] = np.array(content)
     np.savetxt(filename, a, delimiter=",")
     print('txt saving good: ', filename)
     return()
