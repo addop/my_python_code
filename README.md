@@ -24,6 +24,7 @@
 ## idea
 - [ ]舔和不舔期间的像素平均值是不一样的, 如果能够得到平均值的话, 那应该能够去掉突出来的点
 - [ ]数细胞方面可以把图片反相, 看交联处的角度, 来帮助判断靠的很近的细胞之间的关系
+- [ ]看一下这个网站: https://docs.python.org/2/library/multiprocessing.html
 
 
 # my_python_code
@@ -31,3 +32,6 @@ update my Python code
 
 ## bkg和result关系
 像素点下移10pixel
+
+- [ ]所有的会议开支统计一下
+  - 微信询问有哪些人要去
