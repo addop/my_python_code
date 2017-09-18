@@ -1,0 +1,17 @@
+import numpy as np
+import def_baggage_666 as db6
+import ana_openCV as mf
+
+input_path = '/Users/zhenghao/Desktop/Chew_threshold_ana/idea/yuqingpeng_2/video'
+
+# 输入要分析的像素范围
+# 软件截图后, 在'预览'中打开并圈出对应区域的两个顶点
+# 例如:
+# 284 442 ->268 441
+# 新视频: 左上角: 450->384
+rectangle_scope = np.array([388,388+5,447,447+5]) # 分析新视频
+# rectangle_scope = np.array([446,446+3,273,273+3]) # 分析旧视频
+
+# m_frame = mf.pixel_record_1(input_path, rectangle_scope, mode = True)# 旧视频
+m_frame = mf.pixel_record_2(input_path, rectangle_scope)# 新视频
+#NB pixel_record_2(input_path, r_s, figure_condition_save = 'False', mode = 'real_time', bolt = 25, threshold_condition = 0.95)

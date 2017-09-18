@@ -369,7 +369,7 @@ def pixel_record_2(input_path, r_s, threshold = 0.95, figure_condition_save = 'F
         if nap == True:
             print('获得视频nda基本信息: ', np.shape(frame))
             # 保存第一帧的图片
-            imagename = 'start.jpg'.format(video_prefix, filename.split('.')[0])
+            imagename = '{}_{}_start.jpg'.format(video_prefix, filename.split('.')[0])
             imagepath = os.sep.join([frame_path, imagename])
             print('exported {}!'.format(imagepath))
             frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255
@@ -435,8 +435,13 @@ def pixel_record_2(input_path, r_s, threshold = 0.95, figure_condition_save = 'F
     print('patch_trees的长度为: ', len(patch_trees))
 
     # 调用def_baggage_666中的函数, 将列表存为csv文件
-    db6.text_save_fnda(patch_trees, 'result.csv')
-    db6.text_save_fnda(patch_trees_bkg, 'result_bkg.csv')
+    # db6.text_save_fnda(patch_trees, 'result.csv')
+    csvname_token = '{}_{}_result.csv'.format(video_prefix, filename.split('.')[0])
+    db6.text_save_fnda(patch_trees, csvname_token)#NB test
+
+    # db6.text_save_fnda(patch_trees_bkg, 'result_bkg.csv')
+    csvname_token = '{}_{}_result_bkg.csv'.format(video_prefix, filename.split('.')[0])
+    db6.text_save_fnda(patch_trees_bkg, csvname_token)#NB test
 
     # 调用def_baggage_666中的函数, 绘制图片并保存指定格式和文件名
     # 可用格式为:
