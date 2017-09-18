@@ -9,11 +9,13 @@ input_path = '/Users/zhenghao/Desktop/Chew_threshold_ana/idea/yuqingpeng/video'
 # 软件截图后, 在'预览'中打开并圈出对应区域的两个顶点
 # 例如:
 # 284 442 ->268 441
-rectangle_scope = np.array([443,447,270,274])
+# 新视频: 左上角: 450->384
+# rectangle_scope = np.array([388,388+5,447,447+5])
+rectangle_scope = np.array([446,446+3,273,273+3])
 
 # m_frame = mf.pixel_record_666(input_path, rectangle_scope)
 # m_frame = mf.pixel_record_1(input_path, rectangle_scope, mode = True)
-m_frame = mf.pixel_record_2(input_path, rectangle_scope)
+m_frame = mf.pixel_record_2(input_path, rectangle_scope, threshold = 0.95, figure_condition_save = 'False')
 
 # [x] 需要找到范围判定
 # REVIEW 笔记:
@@ -23,7 +25,7 @@ m_frame = mf.pixel_record_2(input_path, rectangle_scope)
 # 3) 90%是我拍脑袋想出来的
 
 # NB 将老大哥的数据导入, 生成01的表格
-eye_data_filePath = '/Users/zhenghao/Desktop/Chew_threshold_ana/idea/yuqingpeng/03.csv'
-eye_data_nda = db6.eye_csv_read(eye_data_filePath, m_frame)
-db6.text_save_fnda(eye_data_nda[:,1], 'result_eye.csv')
-db6.painting_trees(eye_data_nda[:,1],'result_eye.eps')
+# eye_data_filePath = '/Users/zhenghao/Desktop/Chew_threshold_ana/idea/yuqingpeng/03.csv'
+# eye_data_nda = db6.eye_csv_read(eye_data_filePath, m_frame)
+# db6.text_save_fnda(eye_data_nda[:,1], 'result_eye.csv')
+# db6.painting_trees(eye_data_nda[:,1],'result_eye.eps')

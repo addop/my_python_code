@@ -4,9 +4,9 @@ import pandas as pd
 import numpy as np
 
 def painting_trees(list_result,filename):
-    plt.figure(figsize=(100,10))
+    plt.figure(figsize=(500,10))
     plt.plot(list_result, 'k')
-    plt.savefig(filename, dpi = 50, bbox_inches = 'tight')
+    plt.savefig(filename, dpi = 100, bbox_inches = 'tight')
     print('图像保存完毕: ', filename)
 
 

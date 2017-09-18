@@ -5,4 +5,4 @@ import main_function as mf
 
 filePath_target = '/Users/zhenghao/Documents/pythonfile/my_python_code/result.csv'
 filePath_bkg = '/Users/zhenghao/Documents/pythonfile/my_python_code/result_bkg.csv'
-mf.record_ana(filePath_target, filePath_bkg)
+mf.record_ana(filePath_target, filePath_bkg, mode = 'real_time', threshold_condition = 0.95)

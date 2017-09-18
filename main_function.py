@@ -256,6 +256,9 @@ def record_ana(filePath_target, filePath_bkg, mode = 'Normal', bolt = 25, thresh
         threshold = np.min(bkg_a[:,1])*threshold_condition # 这里0.95是我拍脑袋想出来的
         target_a_judge = target_a_token < threshold
 
+    elif mode == 'real_time':
+        target_a_judge = target_a[:,1] < (bkg_a[:,1]*threshold_condition)
+
     # 获得True的段数, 并打印出来
     count_True_a = 0
     count_True_b = 0
@@ -328,7 +331,7 @@ def record_ana(filePath_target, filePath_bkg, mode = 'Normal', bolt = 25, thresh
     return()
 
 # 分析后能够保存judge后的每一帧的图片
-def pixel_record_2(input_path, r_s, figure_condition_save = 'False'):
+def pixel_record_2(input_path, r_s, threshold = 0.95, figure_condition_save = 'False'):
     # 列出文件夹下所有的视频文件
     filenames = os.listdir(input_path)
 
@@ -385,7 +388,7 @@ def pixel_record_2(input_path, r_s, figure_condition_save = 'False'):
         patch_trees_bkg = []
 
         # 开始分析
-        for i in tqdm(range(int(n_frames))):
+        for i in tqdm(range(int(n_frames))): # 10 为测试需要, 减少导出图片时的等待时间
 
             # 按帧读取每一帧的RGB
             # 例子:
@@ -400,7 +403,7 @@ def pixel_record_2(input_path, r_s, figure_condition_save = 'False'):
                 patch_tree_target = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
 
                 # 获取分析位点下15个像素点作为参考
-                patch_tree_bkg = frame[(r_s[0]+15):(r_s[1]+15),r_s[2]:r_s[3],:]
+                patch_tree_bkg = frame[(r_s[0]+25):(r_s[1]+25),r_s[2]:r_s[3],:]
 
                 # 对目标范围内求平均灰度, 获得一个数
                 patch_tree_ave = np.mean(patch_tree_target)
@@ -408,9 +411,9 @@ def pixel_record_2(input_path, r_s, figure_condition_save = 'False'):
                 # 对参考范围求平均灰度, 获得一个数
                 patch_tree_bkg_ave = np.mean(patch_tree_bkg)
 
-                if figure_condition_save == True:
+                if figure_condition_save == 'True':
                     # REVIEW 判断是否小于threshold, 保存所有小于threshold的图片
-                    if patch_tree_ave < patch_tree_bkg_ave * 0.95:
+                    if patch_tree_ave < patch_tree_bkg_ave * threshold:
                         imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
                         imagepath = os.sep.join([frame_path, imagename])
                         print('exported {}!'.format(imagepath))
