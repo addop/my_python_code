@@ -81,11 +81,11 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save = 
                         if patch_tree_ave < patch_tree_bkg_ave * threshold_condition:
                             imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
                             imagepath = os.sep.join([frame_path, imagename])
-                            cv2.imwrite(imagepath, frame)
+                            cv2.imwrite(imagepath, frame[(r_s[0]-100):(r_s[1]+100),(r_s[2]-100):(r_s[3]+100),:])# 修改导出视频的范围, 以加快速度
                         else:
                             imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
                             imagepath = os.sep.join([frame_path_escaped, imagename])
-                            cv2.imwrite(imagepath, frame)
+                            cv2.imwrite(imagepath, frame[(r_s[0]-100):(r_s[1]+100),(r_s[2]-100):(r_s[3]+100),:])# 修改导出视频的范围, 以加快速度
                     # 递交结果
                     patch_trees.append(patch_tree_ave)
                     patch_trees_bkg.append(patch_tree_bkg_ave)
