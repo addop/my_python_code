@@ -59,7 +59,7 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save = 
             patch_trees = []
             patch_trees_bkg = []
             # 开始分析
-            for i in tqdm(range(int(n_frames/30))): # 10 为测试需要, 减少导出图片时的等待时间
+            for i in tqdm(range(int(n_frames))): # 10 为测试需要, 减少导出图片时的等待时间
                 # 按帧读取每一帧的RGB
                 # 例子:
                 # >>> np.shape(frame)

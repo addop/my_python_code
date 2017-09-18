@@ -9,10 +9,7 @@ input_path = '/Users/zhenghao/Desktop/Chew_threshold_ana/data/video'
 # 例如:
 # 284 442 ->268 441
 # 新视频: 左上角: 450->384
-# rectangle_scope = np.array([388,388+5,447,447+5]) # 分析新视频
-# rectangle_scope = np.array([444,444+3,271,271+3]) # 分析旧视频
+# ced视频+5, VR视频+3
 rectangle_scope = np.array([377,377+3,361,361+20]) # 分析旧视频
-
-# m_frame = mf.pixel_record_1(input_path, rectangle_scope, mode = True)# 旧视频
-mf.pixel_record_2(input_path, rectangle_scope, threshold_condition = 0.8)# 新视频
+mf.pixel_record_2(input_path, rectangle_scope, threshold_condition = 0.8, figure_condition_save = 'True')# 新视频
 #NB pixel_record_2(input_path, r_s, figure_condition_save = 'False', mode = 'real_time', bolt = 25, threshold_condition = 0.95)
