@@ -133,14 +133,9 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save ='
                     state_4 = 0
                     count_grating = count_grating + 1
             print('光栅被检测到的次数为: ', count_grating)
-            # 将count_grating结果保存
-            csv_name_token = '{}_{}_grating_judge.csv'.format(video_prefix, filename.split('.')[0])
-            db6.text_save_fnda(target_a_judge, csv_name_token)
-            eps_name_token = '{}_{}_grating_judge.eps'.format(video_prefix, filename.split('.')[0])
-            db6.painting_trees(target_a_judge, eps_name_token)
             # 将grating_onoff time结果保存
             csv_name_token = '{}_{}_grating_onoff_list.csv'.format(video_prefix, filename.split('.')[0])
-            db6.text_save_fnda(count_drink_list, csv_name_token)
+            db6.text_save_fnda(grating_onoff, csv_name_token)
         # threshold判断
         if mode == 'Normal':
             threshold = np.min(bkg_a)*threshold_condition
