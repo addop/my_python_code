@@ -11,7 +11,7 @@ import random
 import def_baggage_666 as db6
 
 
-def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.95, video_mode = 'CED'):# 这里斜杠可以起到换行的作用
+def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.95, video_mode = 'CED'):# 这里斜杠可以起到换行的作用
     # 列出文件夹下所有的视频文件
     filenames = os.listdir(input_path)
     # 获取文件夹名称
@@ -51,6 +51,8 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save ='
                 imagepath = os.sep.join([frame_path, imagename])
                 print('exported {}!'.format(imagepath))
                 frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255
+                frame[LED_scope[0]:LED_scope[1],LED_scope[2]:LED_scope[3],0] = 255
+                frame[LED_scope[0]:LED_scope[1],LED_scope[2]:LED_scope[3],1:3] = 0
                 cv2.imwrite(imagepath, frame)
                 # 获得frame的shape
                 shape_frames = np.shape(frame)
@@ -61,8 +63,9 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save ='
             # 新建存储列表
             patch_trees = []
             patch_trees_bkg = []
+            patch_LED_list = [] # LED 存储list
             # 开始分析
-            for i in tqdm(range(int(n_frames))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
+            for i in tqdm(range(int(n_frames-100))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
                 # 按帧读取每一帧的RGB
                 # 例子:
                 # >>> np.shape(frame)
@@ -73,12 +76,16 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save ='
                     # 获取需要分析的位置范围
                     patch_tree_target = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
                     # 获取分析位点下15个像素点作为参考
-                    patch_tree_bkg = frame[(r_s[0]+25):(r_s[1]+25),(r_s[2]):(r_s[3]),:]
-                    # patch_tree_bkg = frame[(r_s[0]):(r_s[1]),(r_s[2]-200):(r_s[3]-200),:]
+                    patch_tree_bkg = frame[(r_s[0]):(r_s[1]),(r_s[2]-100):(r_s[3]-100),:]
+                    # 获取LED分析区域
+                    patch_LED = frame[LED_scope[0]:LED_scope[1],LED_scope[2]:LED_scope[3],:]
                     # 对目标范围内求平均灰度, 获得一个数
                     patch_tree_ave = np.mean(patch_tree_target)
                     # 对参考范围求平均灰度, 获得一个数
                     patch_tree_bkg_ave = np.mean(patch_tree_bkg)
+                    # LED分析区域求平均灰度
+                    patch_LED_ave = np.mean(patch_LED)
+
                     if figure_condition_save == 'True':
                         # REVIEW 判断是否小于threshold, 保存所有小于threshold的图片
                         if patch_tree_ave < patch_tree_bkg_ave * threshold_condition:
@@ -92,10 +99,12 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save ='
                     # 递交结果
                     patch_trees.append(patch_tree_ave)
                     patch_trees_bkg.append(patch_tree_bkg_ave)
+                    patch_LED_list.append(patch_LED_ave)
                 else:
                     # 将假帧补为255 使得最终结果长度与视频总帧数一致
                     patch_trees.append(255)
                     patch_trees_bkg.append(255)
+                    patch_LED_list.append(0)
         print('patch_trees的长度为: ', len(patch_trees))
         csv_name_token = '{}_{}_result.csv'.format(video_prefix, filename.split('.')[0])
         db6.text_save_fnda(patch_trees, csv_name_token)
@@ -106,8 +115,10 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save ='
         eps_name_token = '{}_{}_result_bkg.eps'.format(video_prefix, filename.split('.')[0])
         db6.painting_trees(patch_trees_bkg, eps_name_token)
 
+
+
         #NB 开始分析
-        target_a = np.array(patch_trees)
+        target_a = np.array(patch_trees) #NOTE
         bkg_a = np.array(patch_trees_bkg)
         # 获得bkg的变化情况并导出csv
         if video_mode == 'CED':
@@ -184,4 +195,9 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save ='
         db6.text_save_fnda(count_drink_list, csv_name_token)
         print('程序运行完毕')
     cap.release()# 释放内存
+    return()
+
+
+def ana_subsection():
+    pass
     return()
