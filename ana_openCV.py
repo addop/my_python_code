@@ -11,8 +11,7 @@ import random
 import def_baggage_666 as db6
 
 
-def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save =\
-    'False', mode = 'real_time', bolt = 25, threshold_condition = 0.95):# 这里斜杠可以起到换行的作用
+def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.95, video_mode = 'CED'):# 这里斜杠可以起到换行的作用
     # 列出文件夹下所有的视频文件
     filenames = os.listdir(input_path)
     # 获取文件夹名称
@@ -63,7 +62,7 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save =\
             patch_trees = []
             patch_trees_bkg = []
             # 开始分析
-            for i in tqdm(range(int(n_frames/20))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
+            for i in tqdm(range(int(n_frames))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
                 # 按帧读取每一帧的RGB
                 # 例子:
                 # >>> np.shape(frame)
@@ -74,8 +73,8 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save =\
                     # 获取需要分析的位置范围
                     patch_tree_target = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
                     # 获取分析位点下15个像素点作为参考
-                    # patch_tree_bkg = frame[(r_s[0]+25):(r_s[1]+25),(r_s[2]):(r_s[3]),:]
-                    patch_tree_bkg = frame[(r_s[0]):(r_s[1]),(r_s[2]-200):(r_s[3]-200),:]
+                    patch_tree_bkg = frame[(r_s[0]+25):(r_s[1]+25),(r_s[2]):(r_s[3]),:]
+                    # patch_tree_bkg = frame[(r_s[0]):(r_s[1]),(r_s[2]-200):(r_s[3]-200),:]
                     # 对目标范围内求平均灰度, 获得一个数
                     patch_tree_ave = np.mean(patch_tree_target)
                     # 对参考范围求平均灰度, 获得一个数
@@ -111,16 +110,37 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save =\
         target_a = np.array(patch_trees)
         bkg_a = np.array(patch_trees_bkg)
         # 获得bkg的变化情况并导出csv
-
-
-
-
-
-
-
-
-
-
+        if video_mode == 'CED':
+            bkg_nda = np.array(patch_trees_bkg)
+            bkg_judge = bkg_nda > 180 # 180是从图片中找到的
+            # 变量声明
+            count_grating = 0
+            grating_onoff = []
+            state_3 = 0
+            state_4 = 0
+            for num in range(len(bkg_judge)-1):
+                token = bkg_judge[num + 1:num + bolt + 1] == 1
+                if bkg_judge[num] == False and bkg_judge[num+1] == True:
+                    if state_3 == 0:
+                        token_on = num+1
+                    state_3 = 1
+                if bkg_judge[num] == True and True not in token:
+                    token_off = num
+                    state_4 = 1
+                if state_3 == 1 and state_4 == 1:
+                    grating_onoff.append([token_on, token_off])
+                    state_3 = 0
+                    state_4 = 0
+                    count_grating = count_grating + 1
+            print('光栅被检测到的次数为: ', count_grating)
+            # 将count_grating结果保存
+            csv_name_token = '{}_{}_grating_judge.csv'.format(video_prefix, filename.split('.')[0])
+            db6.text_save_fnda(target_a_judge, csv_name_token)
+            eps_name_token = '{}_{}_grating_judge.eps'.format(video_prefix, filename.split('.')[0])
+            db6.painting_trees(target_a_judge, eps_name_token)
+            # 将grating_onoff time结果保存
+            csv_name_token = '{}_{}_grating_onoff_list.csv'.format(video_prefix, filename.split('.')[0])
+            db6.text_save_fnda(count_drink_list, csv_name_token)
         # threshold判断
         if mode == 'Normal':
             threshold = np.min(bkg_a)*threshold_condition
