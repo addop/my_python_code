@@ -11,7 +11,8 @@ import random
 import def_baggage_666 as db6
 
 
-def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save = 'False', mode = 'real_time', bolt = 25, threshold_condition = 0.95):
+def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save =\
+    'False', mode = 'real_time', bolt = 25, threshold_condition = 0.95):# 这里斜杠可以起到换行的作用
     # 列出文件夹下所有的视频文件
     filenames = os.listdir(input_path)
     # 获取文件夹名称
@@ -106,11 +107,20 @@ def pixel_record_2(input_path, r_s, video_form = 'mov', figure_condition_save = 
         eps_name_token = '{}_{}_result_bkg.eps'.format(video_prefix, filename.split('.')[0])
         db6.painting_trees(patch_trees_bkg, eps_name_token)
 
-        # cap.release()# 释放内存
-
         #NB 开始分析
         target_a = np.array(patch_trees)
         bkg_a = np.array(patch_trees_bkg)
+        # 获得bkg的变化情况并导出csv
+
+
+
+
+
+
+
+
+
+
         # threshold判断
         if mode == 'Normal':
             threshold = np.min(bkg_a)*threshold_condition
