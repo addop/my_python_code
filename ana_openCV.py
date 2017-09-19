@@ -11,7 +11,7 @@ import random
 import def_baggage_666 as db6
 
 
-def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.95, video_mode = 'CED'):# 这里斜杠可以起到换行的作用
+def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.95, video_mode = 'CED', skip_frame = 1):# 这里斜杠可以起到换行的作用
     # 列出文件夹下所有的视频文件
     filenames = os.listdir(input_path)
     # 获取文件夹名称
@@ -43,6 +43,12 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
             # for i in range(42):
             #     cap.read()
             # 调用第一帧, 获取视频基本信息
+
+            # 选择要跳过的帧数
+            print('正在跳过前', skip_frame, '帧, 以解决水管移动问题')
+            for item in tqdm(range(skip_frame)):
+                nap,frame = cap.read()
+            print('已经跳过',skip_frame, '帧数')
             nap,frame = cap.read()
             if nap == True:
                 print('Video matrix shape: ', np.shape(frame))
@@ -65,7 +71,7 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
             patch_trees_bkg = []
             patch_LED_list = [] # LED 存储list
             # 开始分析
-            for i in tqdm(range(int(n_frames-100))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
+            for i in tqdm(range(int(n_frames-skip_frame-1))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
                 # 按帧读取每一帧的RGB
                 # 例子:
                 # >>> np.shape(frame)
@@ -76,7 +82,7 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
                     # 获取需要分析的位置范围
                     patch_tree_target = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
                     # 获取分析位点下15个像素点作为参考
-                    patch_tree_bkg = frame[(r_s[0]):(r_s[1]),(r_s[2]-100):(r_s[3]-100),:]
+                    patch_tree_bkg = frame[(r_s[0]+15):(r_s[1]+15),(r_s[2]):(r_s[3]),:]
                     # 获取LED分析区域
                     patch_LED = frame[LED_scope[0]:LED_scope[1],LED_scope[2]:LED_scope[3],:]
                     # 对目标范围内求平均灰度, 获得一个数
