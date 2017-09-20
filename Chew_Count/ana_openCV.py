@@ -11,7 +11,7 @@ import random
 import def_baggage_666 as db6
 
 
-def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.8, video_mode = 'NaN', skip_frame = 1):# 这里斜杠可以起到换行的作用
+def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.8, video_mode = 'NaN', skip_frame = 1, start_video = 'False'):# 这里斜杠可以起到换行的作用
     if figure_condition_save == 'true' or figure_condition_save == 'false':
         print('傻逼你的True or False首字母忘记大写了!')
         return()
@@ -20,6 +20,10 @@ def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', f
     filenames = os.listdir(input_path)
     # 获取文件夹名称
     video_prefix = input_path.split(os.sep)[-1]
+    # 新建start文件夹
+    frame_start_path = '{}_start'.format(input_path)
+    if not os.path.exists(frame_path):
+        os.mkdir(frame_path)
     # 建立一个新的文件夹，名称为原文件夹名称后加上_frames
     frame_path = '{}_frames'.format(input_path)
     if not os.path.exists(frame_path):
@@ -58,16 +62,19 @@ def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', f
                 print('Video matrix shape: ', np.shape(frame))
                 # 保存第一帧的图片
                 imagename = '{}_{}_start.jpg'.format(video_prefix, filename.split('.')[0])
-                imagepath = os.sep.join([frame_path, imagename])
+                imagepath = os.sep.join([frame_start_path, imagename])
                 print('exported {}!'.format(imagepath))
                 frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255
                 print('蓝色区域为bkg')
-                frame[(r_s[0]):(r_s[1]),(r_s[2]-100):(r_s[3]-100),0] = 255
-                frame[(r_s[0]):(r_s[1]),(r_s[2]-100):(r_s[3]-100),1:3] = 0
+                frame[(r_s[0]):(r_s[1]),(r_s[2]+100):(r_s[3]+100),0] = 255
+                frame[(r_s[0]):(r_s[1]),(r_s[2]+100):(r_s[3]+100),1:3] = 0
                 cv2.imwrite(imagepath, frame)
                 # 获得frame的shape
                 shape_frames = np.shape(frame)
                 # 确定需要分析的范围
+                if start_video == 'True':
+                    cap.release()
+                    break
             else:
                 print('视频信息获取失败')
                 return('代码运行错误')
@@ -88,7 +95,7 @@ def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', f
                     # 获取需要分析的位置范围
                     patch_tree_target = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
                     # 获取分析位点下15个像素点作为参考
-                    patch_tree_bkg = frame[(r_s[0]):(r_s[1]),(r_s[2]-100):(r_s[3]-100),:]
+                    patch_tree_bkg = frame[(r_s[0]):(r_s[1]),(r_s[2]+100):(r_s[3]+100),:]
                     # 获取光栅分析位点
                     patch_grating = frame[(r_s[0]-140):(r_s[1]-140),(r_s[2]+560):(r_s[3]+560),:]
                     # 获取LED分析区域
@@ -215,7 +222,7 @@ def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', f
         csv_name_token = '{}_{}_count_drink_list.csv'.format(video_prefix, filename.split('.')[0])
         db6.text_save_fnda(count_drink_list, csv_name_token)
         print('程序运行完毕')
-        cap.release()# 释放内存, 在for循环内释放, 这样应该能够避免释放后被修改的bug
+    cap.release()# 释放内存
     return()
 
 
