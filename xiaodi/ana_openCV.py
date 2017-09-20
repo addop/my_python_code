@@ -11,14 +11,19 @@ import random
 import def_baggage_666 as db6
 
 
-def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.95, video_mode = 'CED', skip_frame = 1):# 这里斜杠可以起到换行的作用
+def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.8, video_mode = 'NaN', skip_frame = 1, start_video = 'False', ana_frame_num = 'All'):# 这里斜杠可以起到换行的作用
     if figure_condition_save == 'true' or figure_condition_save == 'false':
         print('傻逼你的True or False首字母忘记大写了!')
         return()
+    print('软件版本201709201858')
     # 列出文件夹下所有的视频文件
     filenames = os.listdir(input_path)
     # 获取文件夹名称
     video_prefix = input_path.split(os.sep)[-1]
+    # 新建start文件夹
+    frame_start_path = '{}_start'.format(input_path)
+    if not os.path.exists(frame_start_path):
+        os.mkdir(frame_start_path)
     # 建立一个新的文件夹，名称为原文件夹名称后加上_frames
     frame_path = '{}_frames'.format(input_path)
     if not os.path.exists(frame_path):
@@ -34,7 +39,7 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
         print('正在分析的 filename is: ', filename)
         if filename == '.DS_Store':# 果然是.DS_Store的锅, 现在内存也不爆了
             continue
-        #REVIEW [X]尝试对Segmentation fault进行解决: 使用一个if
+        # [X]尝试对Segmentation fault进行解决: 使用一个if
         if filename.split('.')[1] == video_form:
             filepath = os.sep.join([input_path, filename])
             # VideoCapture::open函数可以从文件获取视频
@@ -57,15 +62,22 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
                 print('Video matrix shape: ', np.shape(frame))
                 # 保存第一帧的图片
                 imagename = '{}_{}_start.jpg'.format(video_prefix, filename.split('.')[0])
-                imagepath = os.sep.join([frame_path, imagename])
+                imagepath = os.sep.join([frame_start_path, imagename])
                 print('exported {}!'.format(imagepath))
                 frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255
-                frame[LED_scope[0]:LED_scope[1],LED_scope[2]:LED_scope[3],0] = 255
-                frame[LED_scope[0]:LED_scope[1],LED_scope[2]:LED_scope[3],1:3] = 0
+                print('蓝色区域为bkg')
+                frame[(r_s[0]+15):(r_s[1]+15),(r_s[2]):(r_s[3]),0] = 255
+                frame[(r_s[0]+15):(r_s[1]+15),(r_s[2]):(r_s[3]),1:3] = 0
+                if video_mode == 'VR':
+                    print('黄色区域为LED')
+                    frame[(LED_scope[0]):(LED_scope[1]),(LED_scope[2]):(LED_scope[3]),0] = 0
+                    frame[(LED_scope[0]):(LED_scope[1]),(LED_scope[2]):(LED_scope[3]),1:3] = 255
                 cv2.imwrite(imagepath, frame)
                 # 获得frame的shape
                 shape_frames = np.shape(frame)
                 # 确定需要分析的范围
+                if start_video == 'True':
+                    continue
             else:
                 print('视频信息获取失败')
                 return('代码运行错误')
@@ -75,7 +87,11 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
             patch_LED_list = [] # LED 存储list
             patch_grating_list = [] # grating list
             # 开始分析
-            for i in tqdm(range(int(n_frames-skip_frame-1))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
+            if ana_frame_num == 'All':
+                ana_frame_num = n_frames-skip_frame-1
+            else:
+                ana_frame_num = ana_frame_num * 25
+            for i in tqdm(range(int(ana_frame_num))): #NB 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
                 # 按帧读取每一帧的RGB
                 # 例子:
                 # >>> np.shape(frame)
@@ -101,14 +117,16 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
                     patch_grating_ave = np.mean(patch_grating)
 
                     if figure_condition_save == 'True':
-                        # REVIEW 判断是否小于threshold, 保存所有小于threshold的图片
+                        # 判断是否小于threshold, 保存所有小于threshold的图片
                         if patch_tree_ave < patch_tree_bkg_ave * threshold_condition:
                             imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
                             imagepath = os.sep.join([frame_path, imagename])
+                            frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255# 使得导出的图片识别区域变成白色
                             cv2.imwrite(imagepath, frame[(r_s[0]-100):(r_s[1]+100),(r_s[2]-100):(r_s[3]+100),:])# 修改导出视频的范围, 以加快速度
                         else:
                             imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
                             imagepath = os.sep.join([frame_path_escaped, imagename])
+                            frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255# 使得导出的图片识别区域变成白色
                             cv2.imwrite(imagepath, frame[(r_s[0]-100):(r_s[1]+100),(r_s[2]-100):(r_s[3]+100),:])# 修改导出视频的范围, 以加快速度
                     # 递交结果
                     patch_trees.append(patch_tree_ave)
@@ -120,6 +138,7 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
                     patch_trees.append(255)
                     patch_trees_bkg.append(255)
                     patch_LED_list.append(0)
+                    patch_grating_list.append(100) # 100 > 下面的 判定 75
         print('patch_trees的长度为: ', len(patch_trees))
         csv_name_token = '{}_{}_result.csv'.format(video_prefix, filename.split('.')[0])
         db6.text_save_fnda(patch_trees, csv_name_token)
@@ -132,14 +151,43 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
 
 
 
-        #NB 开始分析
-        target_a = np.array(patch_trees) #NOTE
+        # 开始分析
+        target_a = np.array(patch_trees)
         bkg_a = np.array(patch_trees_bkg)
+        # 获得LED的变化情况并导出csv, 不用理会命名
+        if video_mode == 'VR':
+            bkg_nda = np.array(patch_LED_list)
+            bkg_judge = bkg_nda > 200 # 120是从图片中找到的, 与上面的选择尺寸相关联
+            # 上排, +是或, *是和
+
+            # 变量声明
+            count_grating = 0
+            grating_onoff = []
+            state_3 = 0
+            state_4 = 0
+            for num in range(len(bkg_judge)-1):
+                token = bkg_judge[num + 1:num + bolt + 1] == 1
+                if bkg_judge[num] == False and bkg_judge[num+1] == True:
+                    if state_3 == 0:
+                        token_on = num+1
+                    state_3 = 1
+                if bkg_judge[num] == True and True not in token:
+                    token_off = num
+                    state_4 = 1
+                if state_3 == 1 and state_4 == 1 and token_off - token_on > 1: # 增加对LED段的长度的判定, off要大于on 6帧
+                    grating_onoff.append([token_on, token_off])
+                    state_3 = 0
+                    state_4 = 0
+                    count_grating = count_grating + 1
+            print('LED被检测到的次数为: ', count_grating)
+            # 将grating_onoff time结果保存
+            csv_name_token = '{}_{}_LED_onoff_list.csv'.format(video_prefix, filename.split('.')[0])
+            db6.text_save_fnda(grating_onoff, csv_name_token)
         # 获得grating的变化情况并导出csv, 不用理会命名, 这段懒得改了
         if video_mode == 'CED':
             bkg_nda = np.array(patch_grating_list)
             bkg_judge = bkg_nda < 70 # 120是从图片中找到的, 与上面的选择尺寸相关联
-            # NB: 上排, +是或, *是和
+            # 上排, +是或, *是和
 
             # 变量声明
             count_grating = 0
