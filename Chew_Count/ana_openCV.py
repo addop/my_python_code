@@ -22,8 +22,8 @@ def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', f
     video_prefix = input_path.split(os.sep)[-1]
     # 新建start文件夹
     frame_start_path = '{}_start'.format(input_path)
-    if not os.path.exists(frame_path):
-        os.mkdir(frame_path)
+    if not os.path.exists(frame_start_path):
+        os.mkdir(frame_start_path)
     # 建立一个新的文件夹，名称为原文件夹名称后加上_frames
     frame_path = '{}_frames'.format(input_path)
     if not os.path.exists(frame_path):
