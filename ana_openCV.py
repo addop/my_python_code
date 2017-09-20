@@ -31,7 +31,7 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
     cap = cv2.VideoCapture()
     # 遍历所有文件
     for filename in tqdm(filenames):
-        print('filename is: ', filename)
+        print('正在分析的 filename is: ', filename)
         if filename == '.DS_Store':# 果然是.DS_Store的锅, 现在内存也不爆了
             continue
         #REVIEW [X]尝试对Segmentation fault进行解决: 使用一个if
@@ -73,6 +73,7 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
             patch_trees = []
             patch_trees_bkg = []
             patch_LED_list = [] # LED 存储list
+            patch_grating_list = [] # grating list
             # 开始分析
             for i in tqdm(range(int(n_frames-skip_frame-1))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
                 # 按帧读取每一帧的RGB
@@ -86,6 +87,8 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
                     patch_tree_target = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
                     # 获取分析位点下15个像素点作为参考
                     patch_tree_bkg = frame[(r_s[0]+15):(r_s[1]+15),(r_s[2]):(r_s[3]),:]
+                    # 获取光栅分析位点
+                    patch_grating = frame[(r_s[0]-140):(r_s[1]-140),(r_s[2]+560):(r_s[3]+560),:]
                     # 获取LED分析区域
                     patch_LED = frame[LED_scope[0]:LED_scope[1],LED_scope[2]:LED_scope[3],:]
                     # 对目标范围内求平均灰度, 获得一个数
@@ -94,6 +97,8 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
                     patch_tree_bkg_ave = np.mean(patch_tree_bkg)
                     # LED分析区域求平均灰度
                     patch_LED_ave = np.mean(patch_LED)
+                    # 光栅分析区域求平均灰度
+                    patch_grating_ave = np.mean(patch_grating)
 
                     if figure_condition_save == 'True':
                         # REVIEW 判断是否小于threshold, 保存所有小于threshold的图片
@@ -109,6 +114,7 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
                     patch_trees.append(patch_tree_ave)
                     patch_trees_bkg.append(patch_tree_bkg_ave)
                     patch_LED_list.append(patch_LED_ave)
+                    patch_grating_list.append(patch_grating_ave)
                 else:
                     # 将假帧补为255 使得最终结果长度与视频总帧数一致
                     patch_trees.append(255)
@@ -129,10 +135,12 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
         #NB 开始分析
         target_a = np.array(patch_trees) #NOTE
         bkg_a = np.array(patch_trees_bkg)
-        # 获得bkg的变化情况并导出csv
+        # 获得grating的变化情况并导出csv, 不用理会命名, 这段懒得改了
         if video_mode == 'CED':
-            bkg_nda = np.array(patch_trees_bkg)
-            bkg_judge = bkg_nda > 180 # 180是从图片中找到的
+            bkg_nda = np.array(patch_grating_list)
+            bkg_judge = bkg_nda < 70 # 120是从图片中找到的, 与上面的选择尺寸相关联
+            # NB: 上排, +是或, *是和
+
             # 变量声明
             count_grating = 0
             grating_onoff = []
@@ -147,7 +155,7 @@ def pixel_record_2(input_path, r_s, LED_scope, video_form = 'mov', figure_condit
                 if bkg_judge[num] == True and True not in token:
                     token_off = num
                     state_4 = 1
-                if state_3 == 1 and state_4 == 1:
+                if state_3 == 1 and state_4 == 1 and token_off - token_on > 1: # NOTE 增加对光栅段的长度的判定, off要大于on 6帧
                     grating_onoff.append([token_on, token_off])
                     state_3 = 0
                     state_4 = 0

@@ -26,5 +26,5 @@ LED_scope = np.array([LED点亮行,(LED点亮行+2),LED点亮列,(LED点亮列+2
 
 # 进行分析
 mf.pixel_record_2(input_path, rectangle_scope, LED_scope, video_form = 'mpg', threshold_condition = 0.9, figure_condition_save = 'False', video_mode = 试验台是CED还是VR, skip_frame = 2125)# 新视频
-
+print ('\a'*7) # 程序完结后发出声音
 #NB pixel_record_2(input_path, r_s, figure_condition_save = 'False', mode = 'real_time', bolt = 25, threshold_condition = 0.95, video_mode = 'CED')
