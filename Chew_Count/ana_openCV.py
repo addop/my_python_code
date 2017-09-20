@@ -11,7 +11,7 @@ import random
 import def_baggage_666 as db6
 
 
-def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.8, video_mode = 'NaN', skip_frame = 1, start_video = 'False'):# 这里斜杠可以起到换行的作用
+def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.8, video_mode = 'NaN', skip_frame = 1, start_video = 'False', ana_frame_num = 'All'):# 这里斜杠可以起到换行的作用
     if figure_condition_save == 'true' or figure_condition_save == 'false':
         print('傻逼你的True or False首字母忘记大写了!')
         return()
@@ -84,7 +84,11 @@ def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', f
             patch_LED_list = [] # LED 存储list
             patch_grating_list = [] # grating list
             # 开始分析
-            for i in tqdm(range(int((n_frames-skip_frame-1)/20))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
+            if ana_frame_num == 'All':
+                ana_frame_num = n_frames-skip_frame-1
+            else:
+                ana_frame_num = ana_frame_num * 25
+            for i in tqdm(range(int(ana_frame_num))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
                 # 按帧读取每一帧的RGB
                 # 例子:
                 # >>> np.shape(frame)

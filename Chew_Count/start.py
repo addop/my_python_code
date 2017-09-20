@@ -25,6 +25,6 @@ rectangle_scope = np.array([有多少行,(有多少行+多大的正方形),有�
 # 试验台是CED还是VR = 'NaN'
 
 # 进行分析
-mf.pixel_record_2(input_path, rectangle_scope, video_form = 'mov', figure_condition_save = 'False', start_video = 'False')# 新视频
+mf.pixel_record_2(input_path, rectangle_scope, video_form = 'mov', figure_condition_save = 'False', start_video = 'False', ana_frame_num = 600)# 新视频
 print ('\a'*7) # 程序完结后发出声音
 #NB pixel_record_2(input_path, r_s, figure_condition_save = 'False', mode = 'real_time', bolt = 25, threshold_condition = 0.95, video_mode = 'CED')
