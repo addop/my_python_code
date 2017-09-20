@@ -84,7 +84,7 @@ def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', f
             patch_LED_list = [] # LED 存储list
             patch_grating_list = [] # grating list
             # 开始分析
-            for i in tqdm(range(int(n_frames-skip_frame-1))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
+            for i in tqdm(range(int((n_frames-skip_frame-1)/20))): # REVIEW 如果n_frame-25能否去除内存bug, 如果能解决, 那就是else写入255的锅. 不能解决, 应该是最后release的锅
                 # 按帧读取每一帧的RGB
                 # 例子:
                 # >>> np.shape(frame)
