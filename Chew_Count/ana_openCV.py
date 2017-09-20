@@ -107,10 +107,12 @@ def pixel_record_2(input_path, r_s, LED_scope = [0,2,0,2], video_form = 'mov', f
                         if patch_tree_ave < patch_tree_bkg_ave * threshold_condition:
                             imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
                             imagepath = os.sep.join([frame_path, imagename])
+                            frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255# 使得导出的图片识别区域变成白色
                             cv2.imwrite(imagepath, frame[(r_s[0]-100):(r_s[1]+100),(r_s[2]-100):(r_s[3]+100),:])# 修改导出视频的范围, 以加快速度
                         else:
                             imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
                             imagepath = os.sep.join([frame_path_escaped, imagename])
+                            frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255# 使得导出的图片识别区域变成白色
                             cv2.imwrite(imagepath, frame[(r_s[0]-100):(r_s[1]+100),(r_s[2]-100):(r_s[3]+100),:])# 修改导出视频的范围, 以加快速度
                     # 递交结果
                     patch_trees.append(patch_tree_ave)
