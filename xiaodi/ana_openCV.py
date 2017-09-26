@@ -12,6 +12,7 @@ import def_baggage_666 as db6
 
 
 def pixel_record_2(input_path, r_s, grating_detect = [0,1,0,1], LED_scope = [1,2,1,2], video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.8, video_mode = 'NaN', skip_frame = 1, start_video = 'False', ana_frame_num = 'All'):# 这里斜杠可以起到换行的作用
+    global patch_LED_list
     if figure_condition_save == 'true' or figure_condition_save == 'false':
         print('傻逼你的True or False首字母忘记大写了!')
         return()
