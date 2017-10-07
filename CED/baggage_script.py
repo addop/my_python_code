@@ -9,7 +9,7 @@ def txt_read_pandas(filePath):
     data_A = np.array(data)
     return(data_A)
 
-def data_raise(data, column, threshold = 0.03, delay = 3.5):
+def data_raise(data, column, threshold = 0.2, delay = 0.25):#delay = 0.25是ok的
     # delay的值我通过观察spike2的结果得出, 初步检测能够使用
     count_token = 0 # 计数
     index_list = []
