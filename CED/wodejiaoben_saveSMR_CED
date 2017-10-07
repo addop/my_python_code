@@ -1,0 +1,9 @@
+'将abf批量导出成SMR, 但需要点按屏幕
+
+var i%;
+var channelno$;
+var v19%; 'View created by FileOpen()
+for i% := 1 to 4 step 1 do
+    channelno$ := Str$(i%);
+    FileConvert$("F:\\data_20171001\\17o0100"+channelno$+".abf", "F:\\data_20171001\\17o0100"+channelno$+".SMR", 2);
+next;

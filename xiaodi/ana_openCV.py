@@ -67,8 +67,8 @@ def pixel_record_2(input_path, r_s, grating_detect = [0,1,0,1], LED_scope = [1,2
                 print('exported {}!'.format(imagepath))
                 frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255
                 print('蓝色区域为bkg')
-                frame[(r_s[0]+15):(r_s[1]+15),(r_s[2]):(r_s[3]),0] = 255
-                frame[(r_s[0]+15):(r_s[1]+15),(r_s[2]):(r_s[3]),1:3] = 0
+                frame[(r_s[0]):(r_s[1]),(r_s[2]-150):(r_s[3]-150),0] = 255
+                frame[(r_s[0]):(r_s[1]),(r_s[2]-150):(r_s[3]-150),1:3] = 0
                 if video_mode == 'VR':
                     print('黄色区域为LED')
                     frame[(LED_scope[0]):(LED_scope[1]),(LED_scope[2]):(LED_scope[3]),0] = 0
