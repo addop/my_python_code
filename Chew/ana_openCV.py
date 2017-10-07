@@ -11,7 +11,7 @@ import random
 import def_baggage_666 as db6
 
 
-def pixel_record_2(input_path, r_s, grating_detect = [0,1,0,1], LED_scope = [1,2,1,2], video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 25, threshold_condition = 0.8, video_mode = 'NaN', skip_frame = 1, start_video = 'False', ana_frame_num = 'All'):# 这里斜杠可以起到换行的作用
+def pixel_record_2(input_path, r_s, grating_detect = [0,1,0,1], LED_scope = [1,2,1,2], video_form = 'mov', figure_condition_save ='False', mode = 'real_time', bolt = 100, threshold_condition = 0.8, video_mode = 'Chew', skip_frame = 1, start_video = 'False', ana_frame_num = 'All'):# 这里斜杠可以起到换行的作用
     global patch_LED_list
     if figure_condition_save == 'true' or figure_condition_save == 'false':
         print('傻逼你的True or False首字母忘记大写了!')
@@ -66,11 +66,11 @@ def pixel_record_2(input_path, r_s, grating_detect = [0,1,0,1], LED_scope = [1,2
                 imagepath = os.sep.join([frame_start_path, imagename])
                 print('exported {}!'.format(imagepath))
                 frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255
-                if video_mode = 'Chew':
+                if video_mode == 'Chew':
                     frame[r_s[4]:r_s[5],r_s[6]:r_s[7],:] = 255
                 print('蓝色区域为bkg')
-                frame[(r_s[0]):(r_s[1]),(r_s[2]-150):(r_s[3]-150),0] = 255
-                frame[(r_s[0]):(r_s[1]),(r_s[2]-150):(r_s[3]-150),1:3] = 0
+                frame[(r_s[0]):(r_s[1]),(r_s[2]-100):(r_s[3]-100),0] = 255
+                frame[(r_s[0]):(r_s[1]),(r_s[2]-100):(r_s[3]-100),1:3] = 0
                 if video_mode == 'VR':
                     print('黄色区域为LED')
                     frame[(LED_scope[0]):(LED_scope[1]),(LED_scope[2]):(LED_scope[3]),0] = 0
@@ -108,15 +108,16 @@ def pixel_record_2(input_path, r_s, grating_detect = [0,1,0,1], LED_scope = [1,2
                 # 一定要加上这句话, 否则会报错: 'Segmentation fault: 11'
                 if nap == True:
                     # 获取需要分析的位置范围
-                    patch_tree_target = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
-                    # 获取分析位点下15个像素点作为参考
-                    patch_tree_bkg = frame[(r_s[0]+15):(r_s[1]+15),(r_s[2]):(r_s[3]),:]
+                    patch_tree_target_1 = frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:]
+                    patch_tree_target_2 = frame[r_s[4]:r_s[5],r_s[6]:r_s[7],:]
+                    # 获取1 分析位点左边50个像素点作为参考
+                    patch_tree_bkg = frame[(r_s[0]):(r_s[1]),(r_s[2]-100):(r_s[3]-100),:]
                     # 获取光栅分析位点
                     patch_grating = frame[(grating_detect[0]):(grating_detect[1]),(grating_detect[2]):(grating_detect[3]),:]
                     # 获取LED分析区域
                     patch_LED = frame[LED_scope[0]:LED_scope[1],LED_scope[2]:LED_scope[3],:]
                     # 对目标范围内求平均灰度, 获得一个数
-                    patch_tree_ave = np.mean(patch_tree_target)
+                    patch_tree_ave = np.mean([patch_tree_target_1,patch_tree_target_2])
                     # 对参考范围求平均灰度, 获得一个数
                     patch_tree_bkg_ave = np.mean(patch_tree_bkg)
                     # LED分析区域求平均灰度
@@ -130,12 +131,20 @@ def pixel_record_2(input_path, r_s, grating_detect = [0,1,0,1], LED_scope = [1,2
                             imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
                             imagepath = os.sep.join([frame_path, imagename])
                             frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255# 使得导出的图片识别区域变成白色
-                            cv2.imwrite(imagepath, frame[(r_s[0]-100):(r_s[1]+100),(r_s[2]-100):(r_s[3]+100),:])# 修改导出视频的范围, 以加快速度
+                            frame[r_s[4]:r_s[5],r_s[6]:r_s[7],:] = 255
+                            if video_mode == 'Chew':
+                                cv2.imwrite(imagepath, frame[(r_s[0]-70):(r_s[1]+70),(r_s[2]-50):(r_s[3]+200),:])
+                            else:
+                                cv2.imwrite(imagepath, frame[(r_s[0]-70):(r_s[1]+70),(r_s[2]-100):(r_s[3]+100),:])# 修改导出视频的范围, 以加快速度
                         else:
                             imagename = '{}_{}_{:0>6d}.jpg'.format(video_prefix, filename.split('.')[0], i)
                             imagepath = os.sep.join([frame_path_escaped, imagename])
                             frame[r_s[0]:r_s[1],r_s[2]:r_s[3],:] = 255# 使得导出的图片识别区域变成白色
-                            cv2.imwrite(imagepath, frame[(r_s[0]-100):(r_s[1]+100),(r_s[2]-100):(r_s[3]+100),:])# 修改导出视频的范围, 以加快速度
+                            frame[r_s[4]:r_s[5],r_s[6]:r_s[7],:] = 255
+                            if video_mode == 'Chew':
+                                cv2.imwrite(imagepath, frame[(r_s[0]-70):(r_s[1]+70),(r_s[2]-50):(r_s[3]+200),:])
+                            else:
+                                cv2.imwrite(imagepath, frame[(r_s[0]-70):(r_s[1]+70),(r_s[2]-100):(r_s[3]+100),:])# 修改导出视频的范围, 以加快速度
                     # 递交结果
                     patch_trees.append(patch_tree_ave)
                     patch_trees_bkg.append(patch_tree_bkg_ave)
