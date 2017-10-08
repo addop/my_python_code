@@ -109,7 +109,7 @@ def painting_all(data,list_token,filename):
         plt.subplot(len(list_token)+1,1,index+2)
         a = list_token[index]
         plt.plot(data[a-100:a+300, 1], 'blue', label = str(a))
-        plt.ylim(-1,1)
+        plt.ylim(-1.5,1.5)
 
     plt.subplots_adjust(hspace = 0)# 设置区块之间距离
     plt.savefig(filename, dpi = 300, bbox_inches = 'tight')# 保存图片

@@ -8,7 +8,7 @@ import baggage_script as bs
 
 # 参数
 filePath = '/Users/zhenghao/Desktop/ANA_token/data_20170930/179300%d.txt'
-fanwei = [59,61]
+fanwei = [22,38]
 filename = 'AllPic%d.png'
 # 将文件夹中所有txt循环一遍
 for i in tqdm(range(fanwei[0],fanwei[1])):
