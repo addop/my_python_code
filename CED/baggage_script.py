@@ -76,3 +76,42 @@ def painting_test(data,list_token,filename):
     plt.ylabel('mV')
     plt.savefig(filename, dpi = 300, bbox_inches = 'tight')
     return()
+
+def painting_all(data,list_token,filename):
+    # NOTE:
+    # 先画出一个全局的图片, 然后向下依次画出dataraise点的前后距离的图, 需要新建的画布的尺寸可由程序自动控制
+    # [-]y轴范围可由数据自动控制, 取dataraise后25~200之间最大的值, 设置为最终的y值
+
+    # 将list_token中的点在data中设置确定的值
+    data_token = [0 for _ in range(len(data[:,0]))] # 快速建立全0的列表
+    for item in list_token:
+        data_token[item+5] = 0.5 # 方便图片观察, 将二者错开
+
+    # 确定图片尺寸
+    plt.figure(figsize=(30,3*len(list_token)))
+
+    # 设置当前绘图位置
+    # 图片构成, 需要len(list_token)+1的个数
+    plt.subplot(len(list_token)+1,1,1)
+
+    # 绘制数据结果
+    plt.plot(data[:,1], 'gray')
+    # 绘制dataraise结果
+    plt.plot(np.array(data_token)+0.3, 'red')#让y的数值上下移动, 需要做array化
+    # 确定此图片的参数
+    plt.ylim(-0.5,0.5)
+    # plt.title('')
+
+
+    # for循环绘制接下来的情况
+    for index in range(len(list_token)):
+        # 确定绘制位置
+        plt.subplot(len(list_token)+1,1,index+2)
+        a = list_token[index]
+        plt.plot(data[a-100:a+300, 1], 'blue', label = str(a))
+        plt.ylim(-1,1)
+
+    plt.subplots_adjust(hspace = 0)# 设置区块之间距离
+    plt.savefig(filename, dpi = 300, bbox_inches = 'tight')# 保存图片
+
+    return()

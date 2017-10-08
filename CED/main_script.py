@@ -1,4 +1,4 @@
-# 将txt读取
+# 批量将数据导出
 from tqdm import tqdm
 import numpy as np
 import pandas as pd
