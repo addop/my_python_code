@@ -88,7 +88,7 @@ def painting_all(data,list_token,filename):
         data_token[item+5] = 0.5 # 方便图片观察, 将二者错开
 
     # 确定图片尺寸
-    plt.figure(figsize=(30,3*len(list_token)))
+    plt.figure(figsize=(5,0.5*len(list_token)))#30,3
 
     # 设置当前绘图位置
     # 图片构成, 需要len(list_token)+1的个数
@@ -108,7 +108,7 @@ def painting_all(data,list_token,filename):
         # 确定绘制位置
         plt.subplot(len(list_token)+1,1,index+2)
         a = list_token[index]
-        plt.plot(data[a-100:a+300, 1], 'blue', label = str(a))
+        plt.plot(data[a-100:a+300, 1], 'blue', label = str(a))# 100, 300
         plt.ylim(-1.5,1.5)
 
     plt.subplots_adjust(hspace = 0)# 设置区块之间距离
