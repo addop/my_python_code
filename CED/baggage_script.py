@@ -13,7 +13,7 @@ def data_raise(data, column, threshold = 0.2, delay = 0.25):#delay = 0.25是ok�
     # delay的值我通过观察spike2的结果得出, 初步检测能够使用
     count_token = 0 # 计数
     index_list = []
-    for index in range(int(len(data))):
+    for index in tqdm(range(int(len(data)))):
         if data[index, column] < threshold or data[index, column] > -threshold-0.1:
             if data[index+1, column] >= threshold or data[index+1, column] <= -threshold-0.1:
                 count_token = count_token + 1
@@ -30,7 +30,8 @@ def data_raise(data, column, threshold = 0.2, delay = 0.25):#delay = 0.25是ok�
     # print('增加delay后, data_raise 时刻列表为: ', index_list_del)
     return(index_list_del)
 
-def painting(data,list_token,filename):
+# 不同肌肉, 相同电压, 绘制在一起
+def painting(data,list_token,filename,r_s,title,ylim):
     # NOTE: 绘图主函数
     plt.figure(figsize=(10,3))# figsize不能过大, 想要清楚就去改dpi
     # 阴性对照
@@ -38,21 +39,32 @@ def painting(data,list_token,filename):
     #     a = list_token_NAGControl[index]
     #     plt.plot(data_NAGControl[a-100:a+300, 1], 'gray', label = str(a))
     #     plt.plot(data_NAGControl[a-100:a+300, 2], 'gray', label = str(a))
-    # LED1
-    for index in range(3,6):
+
+    for index in range(r_s[0],r_s[1]):
         a = list_token[index]
-        plt.plot(data[a-100:a+300, 1], 'black', label = str(a))
+        plt.plot(data[a-50:a+150, 1], 'red', label = str(a))
         # plt.plot(data[a-100:a+300, 2], 'red', label = str(a))
-    # LED2
-    for index in range(6,10):
+
+    for index in range(r_s[0],r_s[1]):
         a = list_token[index]
         # plt.plot(data[a-100:a+300, 1], 'black', label = str(a))
-        plt.plot(data[a-100:a+300, 1], 'red', label = str(a))
+        plt.plot(data[a-50:a+150, 2], 'green', label = str(a))
+
+    for index in range(r_s[2],r_s[3]):
+        a = list_token[index]
+        plt.plot(data[a-50:a+150, 1], 'yellow', label = str(a))
+        # plt.plot(data[a-100:a+300, 2], 'red', label = str(a))
+
+    for index in range(r_s[2],r_s[3]):
+        a = list_token[index]
+        # plt.plot(data[a-100:a+300, 1], 'black', label = str(a))
+        plt.plot(data[a-50:a+150, 2], 'black', label = str(a))
+
 
     plt.legend()
-    plt.xticks([0,100,200,300,400], ('-10','0','10','20','30'))
-    # plt.ylim(-1,1)
-    plt.title('200ms ')
+    plt.xticks([0,50,100,150,200], ('-5','0','5','10','15'))
+    plt.ylim(ylim[0],ylim[1])
+    plt.title(title)
     plt.xlabel('ms')
     plt.ylabel('mV')
     plt.savefig(filename, dpi = 300, bbox_inches = 'tight')
@@ -77,7 +89,7 @@ def painting_test(data,list_token,filename):
     plt.savefig(filename, dpi = 300, bbox_inches = 'tight')
     return()
 
-def painting_all(data,list_token,filename):
+def painting_all(data,list_token,filename,column,ylim):
     # NOTE:
     # 先画出一个全局的图片, 然后向下依次画出dataraise点的前后距离的图, 需要新建的画布的尺寸可由程序自动控制
     # [-]y轴范围可由数据自动控制, 取dataraise后25~200之间最大的值, 设置为最终的y值
@@ -88,7 +100,7 @@ def painting_all(data,list_token,filename):
         data_token[item+5] = 0.5 # 方便图片观察, 将二者错开
 
     # 确定图片尺寸
-    plt.figure(figsize=(5,0.5*len(list_token)))#30,3
+    plt.figure(figsize=(20,3*len(list_token)))#30,3
 
     # 设置当前绘图位置
     # 图片构成, 需要len(list_token)+1的个数
@@ -99,7 +111,7 @@ def painting_all(data,list_token,filename):
     # 绘制dataraise结果
     plt.plot(np.array(data_token)+0.3, 'red')#让y的数值上下移动, 需要做array化
     # 确定此图片的参数
-    plt.ylim(-0.5,0.5)
+    plt.ylim(ylim[0],ylim[1])
     # plt.title('')
 
 
@@ -108,7 +120,7 @@ def painting_all(data,list_token,filename):
         # 确定绘制位置
         plt.subplot(len(list_token)+1,1,index+2)
         a = list_token[index]
-        plt.plot(data[a-100:a+300, 1], 'blue', label = str(a))# 100, 300
+        plt.plot(data[a-50:a+150, column], 'blue', label = str(a))# 100, 300
         plt.ylim(-1.5,1.5)
 
     plt.subplots_adjust(hspace = 0)# 设置区块之间距离
