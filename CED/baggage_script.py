@@ -130,6 +130,3 @@ def painting_all(data,list_token,filename,column,ylim):
 
 def save2csv(data, filename):
     np.savetxt(filename, np.array(data), header = 'times')
-
-def savedataraise(data, list_token, filename):
-    pass
