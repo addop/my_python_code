@@ -31,33 +31,33 @@ def data_raise(data, column, threshold = 0.2, delay = 0.25):#delay = 0.25是ok�
     return(index_list_del)
 
 # 不同肌肉, 相同电压, 绘制在一起
-def painting(data,list_token,filename,r_s,title,ylim):
+def painting(data,list_token,filename,r_s,title,ylim, after=150):
     # NOTE: 绘图主函数
     plt.figure(figsize=(10,3))# figsize不能过大, 想要清楚就去改dpi
 
-    # for index in range(r_s[0],r_s[1]):
-    #     a = list_token[index]
-    #     plt.plot(data[a-50:a+150, 2], 'red', label = str(a))
-    #     # plt.plot(data[a-100:a+300, 2], 'red', label = str(a))
+    for index in range(r_s[0],r_s[1]):
+        a = list_token[index]
+        plt.plot(data[a-50:a+after, 2], 'red', label = str(a))#label = str(a)
+        # plt.plot(data[a-100:a+300, 2], 'red', label = str(a))
 
     for index in range(r_s[0],r_s[1]):
         a = list_token[index]
         # plt.plot(data[a-100:a+300, 1], 'black', label = str(a))
-        plt.plot(data[a-50:a+150, 3], 'green', label = str(a))
-    #
-    # for index in range(r_s[2],r_s[3]):
-    #     a = list_token[index]
-    #     plt.plot(data[a-50:a+150, 2], 'yellow', label = str(a))
-    #     # plt.plot(data[a-100:a+300, 2], 'red', label = str(a))
-    #
-    # for index in range(r_s[2],r_s[3]):
-    #     a = list_token[index]
-    #     # plt.plot(data[a-100:a+300, 1], 'black', label = str(a))
-    #     plt.plot(data[a-50:a+150, 3], 'black', label = str(a))
+        plt.plot(data[a-50:a+after, 3], 'green', label = str(a))
+
+    for index in range(r_s[2],r_s[3]):
+        a = list_token[index]
+        plt.plot(data[a-50:a+after, 2], 'yellow', label = str(a))
+        # plt.plot(data[a-100:a+300, 2], 'red', label = str(a))
+
+    for index in range(r_s[2],r_s[3]):
+        a = list_token[index]
+        # plt.plot(data[a-100:a+300, 1], 'black', label = str(a))
+        plt.plot(data[a-50:a+after, 3], 'black', label = str(a))
 
 
-    plt.legend()
-    plt.xticks([0,50,100,150,200], ('-5','0','5','10','15'))
+    # plt.legend()
+    # plt.xticks([0,50,100,150,200], ('-5','0','5','10','15'))
     plt.ylim(ylim[0],ylim[1])
     plt.title(title)
     plt.xlabel('ms')
@@ -139,7 +139,7 @@ def readcsv2pic(filePathList, filename):
         data = pd.read_csv(item, names = ['sampling_spot','gastrocnemius','tibialis anterior'])# names很好
     return()
 
-def GetTheArea(data, list_token_item, column):
+def GetTheArea(data, list_token_item, column,after=1000-50):
     # 函数很棒, 经过了许多测试, 能够完美工作
     # 输入参数说明:
     # data: 原始数据
@@ -147,7 +147,7 @@ def GetTheArea(data, list_token_item, column):
     # column: data中需要分析的column
 
 
-    data_target = data[list_token_item-50:list_token_item+(4*10000-50),column]# 刺激后4s内都要算进去
+    data_target = data[list_token_item-50:list_token_item+after,column]# 刺激后4s内都要算进去,(4*10000-50)
     # 取基线的值
     data_base = np.mean(data_target[:45])
     # 将数据基线拉到0
