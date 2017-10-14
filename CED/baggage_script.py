@@ -34,31 +34,26 @@ def data_raise(data, column, threshold = 0.2, delay = 0.25):#delay = 0.25是ok�
 def painting(data,list_token,filename,r_s,title,ylim):
     # NOTE: 绘图主函数
     plt.figure(figsize=(10,3))# figsize不能过大, 想要清楚就去改dpi
-    # 阴性对照
-    # for index in range(len(list_token_NAGControl)):
-    #     a = list_token_NAGControl[index]
-    #     plt.plot(data_NAGControl[a-100:a+300, 1], 'gray', label = str(a))
-    #     plt.plot(data_NAGControl[a-100:a+300, 2], 'gray', label = str(a))
 
-    for index in range(r_s[0],r_s[1]):
-        a = list_token[index]
-        plt.plot(data[a-50:a+150, 1], 'red', label = str(a))
-        # plt.plot(data[a-100:a+300, 2], 'red', label = str(a))
+    # for index in range(r_s[0],r_s[1]):
+    #     a = list_token[index]
+    #     plt.plot(data[a-50:a+150, 2], 'red', label = str(a))
+    #     # plt.plot(data[a-100:a+300, 2], 'red', label = str(a))
 
     for index in range(r_s[0],r_s[1]):
         a = list_token[index]
         # plt.plot(data[a-100:a+300, 1], 'black', label = str(a))
-        plt.plot(data[a-50:a+150, 2], 'green', label = str(a))
-
-    for index in range(r_s[2],r_s[3]):
-        a = list_token[index]
-        plt.plot(data[a-50:a+150, 1], 'yellow', label = str(a))
-        # plt.plot(data[a-100:a+300, 2], 'red', label = str(a))
-
-    for index in range(r_s[2],r_s[3]):
-        a = list_token[index]
-        # plt.plot(data[a-100:a+300, 1], 'black', label = str(a))
-        plt.plot(data[a-50:a+150, 2], 'black', label = str(a))
+        plt.plot(data[a-50:a+150, 3], 'green', label = str(a))
+    #
+    # for index in range(r_s[2],r_s[3]):
+    #     a = list_token[index]
+    #     plt.plot(data[a-50:a+150, 2], 'yellow', label = str(a))
+    #     # plt.plot(data[a-100:a+300, 2], 'red', label = str(a))
+    #
+    # for index in range(r_s[2],r_s[3]):
+    #     a = list_token[index]
+    #     # plt.plot(data[a-100:a+300, 1], 'black', label = str(a))
+    #     plt.plot(data[a-50:a+150, 3], 'black', label = str(a))
 
 
     plt.legend()
@@ -89,7 +84,7 @@ def painting_test(data,list_token,filename):
     plt.savefig(filename, dpi = 300, bbox_inches = 'tight')
     return()
 
-def painting_all(data,list_token,filename,column,ylim):
+def painting_all(data,list_token,filename,column,ylim):# ok
     # NOTE:
     # 先画出一个全局的图片, 然后向下依次画出dataraise点的前后距离的图, 需要新建的画布的尺寸可由程序自动控制
     # [-]y轴范围可由数据自动控制, 取dataraise后25~200之间最大的值, 设置为最终的y值
@@ -128,5 +123,36 @@ def painting_all(data,list_token,filename,column,ylim):
 
     return()
 
-def save2csv(data, filename):
-    np.savetxt(filename, np.array(data), header = 'times')
+def painting_bar(data1, data2, filename):
+    plt.figure(figsize = (8,5))
+    plt.plot(data1,'o')
+    plt.plot(data2,'*')
+    plt.xlabel('x')
+    plt.ylabel('mV * ms')
+    plt.savefig(filename, dpi = 300, bbox_inches = 'tight')
+
+def save2csv(data, filename):# ok
+    np.savetxt(filename, data, delimiter=',')# header可能存在问题导致之后没有办法自动分列, header可能没有问题, 问题在双重矩阵
+
+def readcsv2pic(filePathList, filename):
+    for item in filePathList:
+        data = pd.read_csv(item, names = ['sampling_spot','gastrocnemius','tibialis anterior'])# names很好
+    return()
+
+def GetTheArea(data, list_token_item, column):
+    # 函数很棒, 经过了许多测试, 能够完美工作
+    # 输入参数说明:
+    # data: 原始数据
+    # list_token_item: list_token中的item, 是给光刺激的时刻
+    # column: data中需要分析的column
+
+
+    data_target = data[list_token_item-50:list_token_item+(4*10000-50),column]# 刺激后4s内都要算进去
+    # 取基线的值
+    data_base = np.mean(data_target[:45])
+    # 将数据基线拉到0
+    data_zero = data_target - data_base
+    # 对数据求绝对值, 使最终面积都为正
+    data_abs = np.abs(data_zero)
+    Area = np.sum(data_abs[50:])*0.1# 这里0.1是以毫秒为单位, 1ms是10个采样点, 采样点间间隔0.1ms
+    return(Area)

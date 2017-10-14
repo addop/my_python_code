@@ -12,7 +12,7 @@ for i in tqdm(range(fanwei[0],fanwei[1])):
     data = bs.txt_read_pandas(filePath_T)# 获取数据
     list_token = bs.data_raise(data,column = 1, threshold = 0.2, delay = 0.25)# 获取dataraise
     filename_T = filename%i# 自动图片命名
-    bs.painting_all(data,list_token,filename_T,column = 1,ylim=[-1.5,1.5])# 批量绘图
+    # bs.painting_all(data,list_token,filename_T,column = 1,ylim=[-1.5,1.5])# 批量绘图
     for index in tqdm(range(len(list_token))):
         item = list_token[index]
         raisedata = data[item-50:item+150,:]
