@@ -14,6 +14,7 @@ def data_raise(data, column, threshold = 0.2, delay = 0.25):#delay = 0.25是ok�
     count_token = 0 # 计数
     index_list = []
     for index in tqdm(range(int(len(data)))):
+    if data[index, column] != 'NaN':
         if data[index, column] < threshold or data[index, column] > -threshold-0.1:
             if data[index+1, column] >= threshold or data[index+1, column] <= -threshold-0.1:
                 count_token = count_token + 1

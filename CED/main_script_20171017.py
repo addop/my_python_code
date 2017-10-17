@@ -8,8 +8,8 @@ import baggage_script as bs
 # 每组数据理应有100个点
 
 # 参数
-filePath = '/Users/zhenghao/Desktop/ANA_token/data_20171011/17o110%d.txt'
-fanwei = [17]
+filePath = '/Users/zhenghao/Desktop/data_20171017/SMR/17o170%d.txt'
+fanwei = [15,16,17]
 filename = 'AllPic_%d_1_small.png'
 filename_single = 'single_%d.png'
 filename_bar = 'bar_%d.png'
