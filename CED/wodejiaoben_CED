@@ -12,3 +12,25 @@ for i% := 0 to 9 step 1 do
     FileSaveAs("F:\\data_20170930\\179300"+channelno$+".txt",1);
     FileClose();
 next;
+
+'\\\\Mac\\Home\\Desktop\\data_20171017\\17o17018.SMR
+
+
+
+
+
+
+'这个函数的目的是批量将数据导出, 注意数据从0开始
+
+var i%;
+var channelno$;
+var v19%; 'View created by FileOpen()
+for i% := 15 to 17 step 1 do
+    channelno$ := Str$(i%);
+    v19%:=FileOpen("\\\\Mac\\Home\\Desktop\\data_20171017\\17o170"+channelno$+".SMR",0,3);
+    ExportRectFormat(10000,1,"\"","	");
+    ExportChanList(1); 'Initialise the channel list
+    ExportChanList(0, 100, 1, 2, 3);'要导出3,2通道的数据
+    FileSaveAs("\\\\Mac\\Home\\Desktop\\data_20171017\\17o170"+channelno$+".txt",1);
+    FileClose();
+next;
