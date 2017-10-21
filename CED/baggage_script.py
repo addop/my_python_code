@@ -13,12 +13,12 @@ def data_raise(data, column, threshold = 0.2, delay = 0.25):#delay = 0.25是ok�
     # delay的值我通过观察spike2的结果得出, 初步检测能够使用
     count_token = 0 # 计数
     index_list = []
-    for index in tqdm(range(int(len(data)))):
-    if data[index, column] != 'NaN':
-        if data[index, column] < threshold or data[index, column] > -threshold-0.1:
-            if data[index+1, column] >= threshold or data[index+1, column] <= -threshold-0.1:
-                count_token = count_token + 1
-                index_list.append(index)
+    for index in tqdm(range(int(len(data)-1))):
+        if data[index, column] != 'NaN':
+            if data[index, column] < threshold or data[index, column] > -threshold-0.1:
+                if data[index+1, column] >= threshold or data[index+1, column] <= -threshold-0.1:
+                    count_token = count_token + 1
+                    index_list.append(index)
     # print('第',column,'列的数据中 data_raise 的个数为: ', count_token)
     # print('data_raise 时刻列表为: ', index_list)
     index_list_del = []
@@ -57,12 +57,12 @@ def painting(data,list_token,filename,r_s,title,ylim, after=150):
         plt.plot(data[a-50:a+after, 3], 'black', label = str(a))
 
 
-    # plt.legend()
+    plt.legend()
     # plt.xticks([0,50,100,150,200], ('-5','0','5','10','15'))
     plt.ylim(ylim[0],ylim[1])
     plt.title(title)
-    plt.xlabel('ms')
-    plt.ylabel('mV')
+    plt.xlabel('point(10kHz/s)')
+    plt.ylabel('Volt(mV)')
     plt.savefig(filename, dpi = 300, bbox_inches = 'tight')
     return()
 

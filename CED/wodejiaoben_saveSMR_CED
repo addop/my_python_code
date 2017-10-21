@@ -7,3 +7,12 @@ for i% := 1 to 4 step 1 do
     channelno$ := Str$(i%);
     FileConvert$("F:\\data_20171001\\17o0100"+channelno$+".abf", "F:\\data_20171001\\17o0100"+channelno$+".SMR", 2);
 next;
+
+
+var i%;
+var channelno$;
+var v19%; 'View created by FileOpen()
+for i% := 20 to 32 step 1 do
+    channelno$ := Str$(i%);
+    FileConvert$("\\\\Mac\\Home\\Desktop\\ANA_token\\data_20171018\\17o180"+channelno$+".abf", "\\\\Mac\\Home\\Desktop\\ANA_token\\data_20171018\\17o180"+channelno$+".SMR", 2);
+next;

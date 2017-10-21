@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # 将data_ave_result 中的数据绘图
 
-filePath = '/Users/zhenghao/Documents/pythonfile/my_python_code/CED/data_ave_result.csv'
+filePath = '/Users/zhenghao/Documents/pythonfile/my_python_code/CED/Volt_jump_result.csv'
 data = np.loadtxt(filePath,dtype=np.float,delimiter=',')
 
 
