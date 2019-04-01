@@ -1,3 +1,4 @@
+# coding=utf-8
 import pandas as pd
 import numpy as np
 # from tqdm import tqdm
@@ -14,7 +15,7 @@ from scipy import signal
 
 from itertools import product
 
-import cv2
+# import cv2
 
 
 # https://cloud.tencent.com/developer/ask/188729
@@ -41,7 +42,8 @@ def band_pass(data, bandpass_num=None, sample_freq=10000):
     # sample_freq = 10000
     # b, a = signal.butter(1, [(bandpass_num[0] * 2 * 3.14) / sample_freq, (bandpass_num[1] * 2 * 3.14) / sample_freq],
     #                      btype='bandpass', analog=True)
-    b, a = signal.butter(1, [(bandpass_num[0] * 2) / sample_freq, (bandpass_num[1] * 2) / sample_freq], btype='bandpass')
+    b, a = signal.butter(1, [(bandpass_num[0] * 2) / sample_freq, (bandpass_num[1] * 2) / sample_freq],
+                         btype='bandpass')
 
     # zi = signal.lfilter_zi(b, a)
     # z, _ = signal.lfilter(b, a, data, zi=zi * data[0])
@@ -845,7 +847,6 @@ class art_show:
     #         plt.savefig(pltTitle + '.jpg')
     #         plt.show()
 
-
     # 可以用selective index来绘制heatmap, 这样能够有更好的视觉效果
     def PTTest(self, SampleA, SampleB, only2Sample='False'):
         # paired ttest
@@ -902,10 +903,10 @@ class art_show:
 # - [ ] 找到什么是对状态的获取, 找到什么是功能的延伸
 
 
-file_path_txt = '/Users/zhenghao/Documents/Doctoral_program/LED/版本修回/实验计划和结果/C7急性记录/黄昫筛选结果好的rawdata/测试bandpass'
-file_path_csv = '/Users/zhenghao/PycharmProjects/dataAna/24_Area_result.csv'
+file_path_txt = 'C:/Users/zhenghao/Documents/Doctoral_program/LED/版本修回/实验计划和结果/C7急性记录/黄昫筛选结果好的rawdata/测试bandpass'
+file_path_csv = 'C:/Users/HaoZ/Documents/mycode_git/git/my_python_code/111-data_ana_new/24_Area_result.csv'
 
-data = EMG_database('read csv file', txt_file_path=file_path_txt, csv_file_path=None,
+data = EMG_database('read csv file', txt_file_path=None, csv_file_path=file_path_csv,
                     paint_raw=None, signal_scope=100, bandpass_num=[50, 300])  # 读取数据
 # NOTE: signal_scope=100, bandpass_num=[100, 300]
 
@@ -915,7 +916,7 @@ data_heat_map_list, data_heat_map_log = data_reshaped.ready_4_heat_map()  # 获�
 
 # 绘制heatmap
 data_painted = art_show(data_heat_map_list)
-fig_name = 'test666'
+fig_name = 'test123'
 fig_title = data_heat_map_log
 data_painted.paint_heatmap(data_painted.data, fig_title, fig_name)
 
