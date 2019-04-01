@@ -622,6 +622,9 @@ class structure_change:
         self.data = data
         self.structure.join('--add muscle tag')
 
+    def normalized(self,data):
+        pass
+
     # def get_result_at_same_volt(self, csvfilepath):
     #     # 读取数据
     #     data = pd.read_csv(csvfilepath)
@@ -907,8 +910,7 @@ file_path_txt = 'C:/Users/zhenghao/Documents/Doctoral_program/LED/版本修回/�
 file_path_csv = 'C:/Users/HaoZ/Documents/mycode_git/git/my_python_code/111-data_ana_new/24_Area_result.csv'
 
 data = EMG_database('read csv file', txt_file_path=None, csv_file_path=file_path_csv,
-                    paint_raw=None, signal_scope=100, bandpass_num=[50, 300])  # 读取数据
-# NOTE: signal_scope=100, bandpass_num=[100, 300]
+                    paint_raw=None, signal_scope=100, bandpass_num=[50, 300])  # 读取数据 # NOTE: signal_scope=100, bandpass_num=[100, 300]
 
 # 改变数据结构和归一化
 data_reshaped = structure_change(data.csv)  # 整理数据结构
