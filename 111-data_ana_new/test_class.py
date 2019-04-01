@@ -479,6 +479,7 @@ class structure_change:
         self.structure = 'database'
 
         self.data = data
+        self.data_normalized = None
 
         structure_change.get_new_frame(self, self.data)
         structure_change.add_muscle_tag(self, self.data)
@@ -620,9 +621,46 @@ class structure_change:
         if 'no muscle' in data['Muscle']:
             print('we have "no muscle" in "Muscle" tag')
         self.data = data
-        self.structure.join('--add muscle tag')
+        self.structure = self.structure + '--add muscle tag'
 
-    def normalized(self,data):
+    def normalized(self, data):
+        '''
+        检查数据后，对每只小鼠每个LED的每个肌肉做归一化
+
+            因为肌肉之间可能存在电极插入方法角度的变化，使得不同肌肉之间不能一起做归一化
+            而不同LED之间做比较，也是说的通的，因为不同LED情况下，
+                肌电电极针位置并没有发生变化（变化很微小）
+            所以这里采用的是每一块肌肉单独做归一化
+        :param data:承接增加了肌肉tag和结构发生变化了的dataframe数据
+        :return:对每只小鼠每个LED所有肌肉做归一化的结果
+        '''
+        # 按顺序读取每列，自动新建有标签的盒子，把Area丢进对应的盒子里，最后再对盒子进行一次计算获得归一化后数值
+        token_dict = {}
+        # 先制作有名称的盒子
+        for i in range(len(data)):
+            token = data.iloc[i, :]
+            token_dict[(token.MiceNum,token.OtherTags,token.ElePosition,token.ChannelNum,token.LedNum)] = []
+        # 往对应盒子中丢数据
+        for i in range(len(data)):
+            token = data.iloc[i, :]
+            token_dict[(token.MiceNum,token.OtherTags,token.ElePosition,token.ChannelNum,token.LedNum)].append(token.Area)
+        print('每一个箱子中元素个数：', len(list(token_dict.values())[0]))
+        print('箱子总数：', len(token_dict))
+        # 矩阵计算归一化后的数值
+        # boxes = np.array(list(token_dict.values()))
+        # boxes_max = np.max(boxes,axis=1)
+        # boxes_normalized = boxes / boxes_max
+        boxes = pd.DataFrame(token_dict)
+        boxes_max = boxes.max(axis=0)
+        boxes_normalized = boxes.div(boxes_max,axis='columns')
+        self.data_normalized = boxes_normalized
+        print(boxes)
+        print(boxes_max)
+        print(boxes_normalized)
+        # print(np.shape(boxes))
+        # print(np.shape(np.max(boxes,axis=1)))
+        # print(np.shape(boxes_normalized))
+        self.structure = self.structure + '--add normal data'
         pass
 
     # def get_result_at_same_volt(self, csvfilepath):
@@ -914,13 +952,14 @@ data = EMG_database('read csv file', txt_file_path=None, csv_file_path=file_path
 
 # 改变数据结构和归一化
 data_reshaped = structure_change(data.csv)  # 整理数据结构
-data_heat_map_list, data_heat_map_log = data_reshaped.ready_4_heat_map()  # 获得数据内容
+data_reshaped.normalized(data_reshaped.data)
+# data_heat_map_list, data_heat_map_log = data_reshaped.ready_4_heat_map()  # 获得数据内容
 
-# 绘制heatmap
-data_painted = art_show(data_heat_map_list)
-fig_name = 'test123'
-fig_title = data_heat_map_log
-data_painted.paint_heatmap(data_painted.data, fig_title, fig_name)
+# # 绘制heatmap
+# data_painted = art_show(data_heat_map_list)
+# fig_name = 'test123'
+# fig_title = data_heat_map_log
+# data_painted.paint_heatmap(data_painted.data, fig_title, fig_name)
 
 # 结束后打印log
 print('Log: ', data_reshaped.structure)
