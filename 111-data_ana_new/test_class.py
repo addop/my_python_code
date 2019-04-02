@@ -1002,10 +1002,35 @@ class art_show:
         '''
         算selectivity index（最大-第二大）/(最大+第二大)，算最大与第二大之间的Wilcoxon P值
 
+        目的是, 对每只小鼠来说, 每个led点亮对应5块肌肉, 那这5块肌肉肯定有一个高低, 那这个选择性就代表这个小鼠的这个led在这个电压下
+        的对五块肌肉影响的情况, 是否有其专一性.
+
+        操作方法和之前的structure_change中类似, 设置复合循环来找所有的盒子, 并计算出selectivity index, 然后统一进行比较
+
+        - [X] 获得title dict
+        - [X] 设置多重循环, 取dataframe A (小鼠, led, 电压)
+        - [X] 对Area列(第一列)sort
+        - [ ] 计算第一列的selectivity index, 结果覆盖在A sort完后的最大值那行首位
+        - [ ] 将计算完毕的A最大值那行
+
         :param data: 输入的data, 可以是归一化后的, 也可以没有归一化, 但必须要有muscle
         :return: 输出所有的SI(selectivity index)
         '''
+        def selectivity_index_get(num1, num2):
+            return abs(num1 - num2)/(num1 + num2)
 
+
+        _, _, title_dict = get_title_list(data, mode=3)
+        print(title_dict)
+
+        for micenum_item, lednum_item, voltnum_item in \
+                product(title_dict['MiceNum'], title_dict['LedNum'], title_dict['VoltNumList']):
+            box_token = data[(data.MiceNum == micenum_item) &
+                             (data.LedNum == lednum_item) &
+                             (data.VoltNumList == voltnum_item)]
+            box_sort = box_token.sort_values('Area', ascending=False)
+            si_token = selectivity_index_get(box_sort.iloc[0,0], box_sort.iloc[1,0])
+            print(si_token)
         pass
 
 
@@ -1037,5 +1062,6 @@ data_reshaped.normalized_new(data_reshaped.data)
 
 # 结束后打印log
 scientist = art_show(data_reshaped.data_normalized)
+scientist.selectivity_index(scientist.data)
 
 print('Log: ', data_reshaped.structure)
