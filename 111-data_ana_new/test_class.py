@@ -83,6 +83,7 @@ def get_title_list(data, mode=0):
         tag_box_token.pop(0)
         tag_box = tag_box_token
     def_token = lambda x: data.drop_duplicates(subset=x, keep='first')[x].tolist()
+    # 或者可以用这个: muscle = data_alltrials.MuscleName.unique()
     tag_box_list = [def_token(item) for item in tag_box]
     # 将两个列表关联起来，用dict
     # 利用zip函数
