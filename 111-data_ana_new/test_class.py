@@ -927,6 +927,7 @@ class structure_change:
 class art_show:
     def __init__(self, data):
         self.data = data
+        print('*'*40)
         print('开始作画')
 
     # def Splt(self, xVal, pltTitle, pltScale=3, hueChoose=['False'],
@@ -997,13 +998,24 @@ class art_show:
             plt.colorbar(mappable=h)
         plt.show()
 
+    def selectivity_index(self, data):
+        '''
+        算selectivity index（最大-第二大）/(最大+第二大)，算最大与第二大之间的Wilcoxon P值
+
+        :param data: 输入的data, 可以是归一化后的, 也可以没有归一化, 但必须要有muscle
+        :return: 输出所有的SI(selectivity index)
+        '''
+
+        pass
+
+
 
 # 希望尝试的列表
 # - [ ] 相当于我对函数做了一个二级分装, 有条理的分装
 # - [ ] 找到什么是对状态的获取, 找到什么是功能的延伸
 
 
-file_path_txt = ''
+file_path_txt = '111'
 file_path_csv = '24_Area_result.csv'
 
 data = EMG_database('read csv file', txt_file_path=None, csv_file_path=file_path_csv,
@@ -1014,13 +1026,16 @@ data = EMG_database('read csv file', txt_file_path=None, csv_file_path=file_path
 data_reshaped = structure_change(data.csv)  # 整理数据结构
 data_reshaped.normalized_new(data_reshaped.data)
 
-data_heat_map_list, data_heat_map_log = data_reshaped.ready_4_heat_map(data_reshaped.data_normalized)  # 获得数据内容
+# data_heat_map_list, data_heat_map_log = data_reshaped.ready_4_heat_map(data_reshaped.data_normalized)  # 获得数据内容
+# # 绘制heatmap
+# data_painted = art_show(data_heat_map_list)
+# fig_name = 'test123_norm'
+# fig_title = data_heat_map_log
+# data_painted.paint_heatmap(data_painted.data, fig_title, fig_name)
 
-# 绘制heatmap
-data_painted = art_show(data_heat_map_list)
-fig_name = 'test123_norm'
-fig_title = data_heat_map_log
-data_painted.paint_heatmap(data_painted.data, fig_title, fig_name)
+
 
 # 结束后打印log
+scientist = art_show(data_reshaped.data_normalized)
+
 print('Log: ', data_reshaped.structure)

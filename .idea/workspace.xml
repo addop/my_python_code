@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="更改因为修改了外围def导致的变量数目问题, 同时更新了log">
+    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="发现黄昫有更好的挑选pandas唯一数值的办法(非重复值)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/111-data_ana_new/test_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/111-data_ana_new/test_class.py" afterDir="false" />
     </list>
     <ignored path="my_python_code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/111-data_ana_new/test_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="1024" column="39" lean-forward="true" selection-start-line="1024" selection-start-column="39" selection-end-line="1024" selection-end-column="39" />
+            <state relative-caret-position="333">
+              <caret line="1001" selection-start-line="1001" selection-end-line="1001" />
               <folding>
                 <element signature="e#15#34#0" expanded="true" />
                 <element signature="e#177#189#0" />
@@ -34,6 +35,7 @@
                 <element signature="e#818#828#0" />
                 <element signature="e#1231#1261#0" />
                 <element signature="e#1413#1435#0" />
+                <element signature="e#1584#2477#0" />
                 <element signature="e#1584#1760#1" />
                 <element signature="e#2045#2147#0" />
                 <element signature="e#2292#2309#0" />
@@ -79,6 +81,7 @@
                 <element signature="e#14728#16643#0" />
                 <element signature="e#15675#16541#0" />
                 <element signature="e#16486#16507#0" />
+                <element signature="e#16769#35310#0" />
                 <element signature="e#17076#18989#0" />
                 <element signature="e#17406#17873#0" />
                 <element signature="e#17933#18400#0" />
@@ -107,6 +110,7 @@
                 <element signature="e#23846#24013#0" />
                 <element signature="e#24126#24139#0" />
                 <element signature="e#24561#24585#0" />
+                <element signature="e#24860#26321#0" />
                 <element signature="e#24798#25222#1" />
                 <element signature="e#26099#26148#0" />
                 <element signature="e#29846#29988#0" />
@@ -126,10 +130,9 @@
                 <element signature="e#32360#32738#0" />
                 <element signature="e#32481#32738#0" />
                 <element signature="e#32792#32981#0" />
+                <element signature="e#33280#35480#0" />
                 <element signature="e#33773#35184#0" />
                 <element signature="e#34548#34732#0" />
-                <element signature="e#35333#38185#0" />
-                <element signature="e#35367#35405#0" />
                 <element signature="e#35411#35476#0" />
                 <element signature="e#36366#36685#0" />
                 <element signature="e#36503#36685#0" />
@@ -139,7 +142,17 @@
                 <element signature="e#37389#38166#0" />
                 <element signature="e#37498#37512#0" />
                 <element signature="e#38188#38197#0" />
+                <element signature="e#39008#39121#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/111-data_ana_new/Fig5h_S11_codes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="150" column="59" lean-forward="true" selection-start-line="150" selection-start-column="59" selection-end-line="150" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -152,6 +165,11 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>index</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -364,20 +382,34 @@
       <option name="project" value="LOCAL" />
       <updated>1554190716080</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="可以正常输出normalized之后的图了">
+      <created>1554191216049</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1554191216049</updated>
+    </task>
+    <task id="LOCAL-00009" summary="发现黄昫有更好的挑选pandas唯一数值的办法(非重复值)">
+      <created>1554192228942</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1554192228942</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25885227" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25885227" />
       <window_info id="Structure" order="1" weight="0.25274727" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -420,7 +452,9 @@
     <MESSAGE value="归一化后的数据可以直接变成一个表格self.normalized" />
     <MESSAGE value="取消掉warning" />
     <MESSAGE value="更改因为修改了外围def导致的变量数目问题, 同时更新了log" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改因为修改了外围def导致的变量数目问题, 同时更新了log" />
+    <MESSAGE value="可以正常输出normalized之后的图了" />
+    <MESSAGE value="发现黄昫有更好的挑选pandas唯一数值的办法(非重复值)" />
+    <option name="LAST_COMMIT_MESSAGE" value="发现黄昫有更好的挑选pandas唯一数值的办法(非重复值)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/xiaodi/start.py">
@@ -554,8 +588,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/111-data_ana_new/test_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="1024" column="39" lean-forward="true" selection-start-line="1024" selection-start-column="39" selection-end-line="1024" selection-end-column="39" />
+        <state relative-caret-position="333">
+          <caret line="1001" selection-start-line="1001" selection-end-line="1001" />
           <folding>
             <element signature="e#15#34#0" expanded="true" />
             <element signature="e#177#189#0" />
@@ -565,6 +599,7 @@
             <element signature="e#818#828#0" />
             <element signature="e#1231#1261#0" />
             <element signature="e#1413#1435#0" />
+            <element signature="e#1584#2477#0" />
             <element signature="e#1584#1760#1" />
             <element signature="e#2045#2147#0" />
             <element signature="e#2292#2309#0" />
@@ -610,6 +645,7 @@
             <element signature="e#14728#16643#0" />
             <element signature="e#15675#16541#0" />
             <element signature="e#16486#16507#0" />
+            <element signature="e#16769#35310#0" />
             <element signature="e#17076#18989#0" />
             <element signature="e#17406#17873#0" />
             <element signature="e#17933#18400#0" />
@@ -638,6 +674,7 @@
             <element signature="e#23846#24013#0" />
             <element signature="e#24126#24139#0" />
             <element signature="e#24561#24585#0" />
+            <element signature="e#24860#26321#0" />
             <element signature="e#24798#25222#1" />
             <element signature="e#26099#26148#0" />
             <element signature="e#29846#29988#0" />
@@ -657,10 +694,9 @@
             <element signature="e#32360#32738#0" />
             <element signature="e#32481#32738#0" />
             <element signature="e#32792#32981#0" />
+            <element signature="e#33280#35480#0" />
             <element signature="e#33773#35184#0" />
             <element signature="e#34548#34732#0" />
-            <element signature="e#35333#38185#0" />
-            <element signature="e#35367#35405#0" />
             <element signature="e#35411#35476#0" />
             <element signature="e#36366#36685#0" />
             <element signature="e#36503#36685#0" />
@@ -670,7 +706,15 @@
             <element signature="e#37389#38166#0" />
             <element signature="e#37498#37512#0" />
             <element signature="e#38188#38197#0" />
+            <element signature="e#39008#39121#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/111-data_ana_new/Fig5h_S11_codes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="150" column="59" lean-forward="true" selection-start-line="150" selection-start-column="59" selection-end-line="150" selection-end-column="59" />
         </state>
       </provider>
     </entry>
