@@ -17,6 +17,7 @@ from scipy import signal
 from itertools import product
 
 
+
 # import cv2
 
 
@@ -693,9 +694,11 @@ class structure_change:
         :return:对每只小鼠每个LED所有肌肉做归一化的结果
         '''
         _,_,title_dict = get_title_list(data, mode=3)
-        print(title_dict)
         # 使用itertool的笛卡尔积来做多重嵌套循环
         # https://www.jianshu.com/p/57a6e1188f88
+
+        box_new = pd.DataFrame()
+
         for leftorright_item, \
             micenum_item, eleposition_item, \
             lednum_item in product(
@@ -710,8 +713,9 @@ class structure_change:
             #  count every dataframe
             box_token_max = box_token['Area'].max()
             boxes_token_normalized = box_token['Area'].div(box_token_max)
-            print(boxes_token_normalized)
-        pass
+            box_token['Area'] = boxes_token_normalized
+            box_new = pd.concat([box_new, box_token])
+        self.data_normalized = box_new
 
 
     # def get_result_at_same_volt(self, csvfilepath):
