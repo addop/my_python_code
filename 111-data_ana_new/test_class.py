@@ -995,8 +995,8 @@ class art_show:
 # - [ ] 找到什么是对状态的获取, 找到什么是功能的延伸
 
 
-file_path_txt = 'C:/Users/zhenghao/Documents/Doctoral_program/LED/版本修回/实验计划和结果/C7急性记录/黄昫筛选结果好的rawdata/测试bandpass'
-file_path_csv = 'C:/Users/HaoZ/Documents/mycode_git/git/my_python_code/111-data_ana_new/24_Area_result.csv'
+file_path_txt = ''
+file_path_csv = '24_Area_result.csv'
 
 data = EMG_database('read csv file', txt_file_path=None, csv_file_path=file_path_csv,
                     paint_raw=None, signal_scope=100,
