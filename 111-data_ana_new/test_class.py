@@ -718,6 +718,7 @@ class structure_change:
             box_token['Area'] = boxes_token_normalized
             box_new = pd.concat([box_new, box_token])
         self.data_normalized = box_new
+        self.structure = self.structure + '--normalized'
 
 
     # def get_result_at_same_volt(self, csvfilepath):
@@ -872,14 +873,14 @@ class structure_change:
             target_muscle = 'no muscle'
         return (target_muscle)
 
-    def ready_4_heat_map(self):
+    def ready_4_heat_map(self, data):
         # 获得归一化后的数据结构
         # 结果做成一个字典可能也会不错, 这样绘图的时候能直接索引, 而不是传一个列表过去, 列表的结构也有可能发生变化
         # 这里也可以直接用self.data来进行参数传递
         # x_title = 'LedNum'
         # y_title = 'VoltNum'
 
-        title, title_box = get_title_list(self.data, mode=3)
+        title, title_box, _ = get_title_list(data, mode=3)
 
         # for title_token in title:
         #     print(title_token)
@@ -918,7 +919,7 @@ class structure_change:
                                    str(mice_num) + '-' +
                                    str(ele_position) + '-' +
                                    str(muscle_name))
-        self.structure = self.structure + '--normalized & heat map structure'
+        self.structure = self.structure + '--heat map structure'
         return data_choose_box, data_choose_log
 
 
@@ -1011,13 +1012,14 @@ data = EMG_database('read csv file', txt_file_path=None, csv_file_path=file_path
 # 改变数据结构和归一化
 data_reshaped = structure_change(data.csv)  # 整理数据结构
 data_reshaped.normalized_new(data_reshaped.data)
-# data_heat_map_list, data_heat_map_log = data_reshaped.ready_4_heat_map()  # 获得数据内容
 
-# # 绘制heatmap
-# data_painted = art_show(data_heat_map_list)
-# fig_name = 'test123'
-# fig_title = data_heat_map_log
-# data_painted.paint_heatmap(data_painted.data, fig_title, fig_name)
+data_heat_map_list, data_heat_map_log = data_reshaped.ready_4_heat_map(data_reshaped.data_normalized)  # 获得数据内容
+
+# 绘制heatmap
+data_painted = art_show(data_heat_map_list)
+fig_name = 'test123_norm'
+fig_title = data_heat_map_log
+data_painted.paint_heatmap(data_painted.data, fig_title, fig_name)
 
 # 结束后打印log
 print('Log: ', data_reshaped.structure)
