@@ -16,6 +16,8 @@ from scipy import signal
 
 from itertools import product
 
+import warnings# 取消warning
+warnings.filterwarnings("ignore")
 
 
 # import cv2
