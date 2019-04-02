@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 # from scipy import signal
 import os
+from itertools import product
 # import mne
 # from scipy.fftpack import fft, ifft
 import seaborn as sns
@@ -14,6 +15,7 @@ from scipy import signal
 # from scipy.fftpack import fft, ifft
 
 from itertools import product
+
 
 # import cv2
 
@@ -60,9 +62,14 @@ def band_pass(data, bandpass_num=None, sample_freq=10000):
 
 
 def get_title_list(data, mode=0):
-    # 通过展现我有哪些小鼠，都有哪些tag
-    # 期望在绘图的时候可以自动把所有的tag都循环一遍以节省人力
-    # mode == 1 好像没用
+    '''
+    获取数据的一些固定tag的非重复内容
+
+    获取数据的一些固定tag
+    :param data: dataframe
+    :param mode: 针对不同tag，其中mode=3是指除了第一个Area以外都算进来，适合整理过的数据
+    :return: 返回我们查看的tag列表，以及对应的非重复内容
+    '''
     title_list = data.columns.values.tolist()
     if mode == 0:
         tag_box = ['LeftOrRight', 'MiceNum', 'ElePosition', 'LedNum', 'OtherTags']
@@ -74,7 +81,11 @@ def get_title_list(data, mode=0):
         tag_box = tag_box_token
     def_token = lambda x: data.drop_duplicates(subset=x, keep='first')[x].tolist()
     tag_box_list = [def_token(item) for item in tag_box]
-    return tag_box, tag_box_list
+    # 将两个列表关联起来，用dict
+    # 利用zip函数
+    # https://www.cnblogs.com/fh-fendou/p/7515775.html
+    tag_box_dict = dict(zip(tag_box, tag_box_list))
+    return tag_box, tag_box_list, tag_box_dict
 
 
 def normalize_data(data_need_normalized):
@@ -623,7 +634,7 @@ class structure_change:
         self.data = data
         self.structure = self.structure + '--add muscle tag'
 
-    def normalized(self, data):
+    def normalized_old(self, data):
         '''
         检查数据后，对每只小鼠每个LED的每个肌肉做归一化
 
@@ -635,15 +646,17 @@ class structure_change:
         :return:对每只小鼠每个LED所有肌肉做归一化的结果
         '''
         # 按顺序读取每列，自动新建有标签的盒子，把Area丢进对应的盒子里，最后再对盒子进行一次计算获得归一化后数值
+        # 每一次导入后都用一个新列表装着dict中每个列表的位置信息
         token_dict = {}
         # 先制作有名称的盒子
         for i in range(len(data)):
             token = data.iloc[i, :]
-            token_dict[(token.MiceNum,token.OtherTags,token.ElePosition,token.ChannelNum,token.LedNum)] = []
+            token_dict[(token.MiceNum, token.OtherTags, token.ElePosition, token.ChannelNum, token.LedNum)] = []
         # 往对应盒子中丢数据
         for i in range(len(data)):
             token = data.iloc[i, :]
-            token_dict[(token.MiceNum,token.OtherTags,token.ElePosition,token.ChannelNum,token.LedNum)].append(token.Area)
+            token_dict[(token.MiceNum, token.OtherTags, token.ElePosition, token.ChannelNum, token.LedNum)].append(
+                token.Area)
         print('每一个箱子中元素个数：', len(list(token_dict.values())[0]))
         print('箱子总数：', len(token_dict))
         # 矩阵计算归一化后的数值
@@ -652,7 +665,7 @@ class structure_change:
         # boxes_normalized = boxes / boxes_max
         boxes = pd.DataFrame(token_dict)
         boxes_max = boxes.max(axis=0)
-        boxes_normalized = boxes.div(boxes_max,axis='columns')
+        boxes_normalized = boxes.div(boxes_max, axis='columns')
         self.data_normalized = boxes_normalized
         print(boxes)
         print(boxes_max)
@@ -662,6 +675,44 @@ class structure_change:
         # print(np.shape(boxes_normalized))
         self.structure = self.structure + '--add normal data'
         pass
+
+    def normalized_new(self, data):
+        '''
+        检查数据后，对每只小鼠每个LED的每个肌肉做归一化
+
+            因为肌肉之间可能存在电极插入方法角度的变化，使得不同肌肉之间不能一起做归一化
+            而不同LED之间做比较，也是说的通的，因为不同LED情况下，
+                肌电电极针位置并没有发生变化（变化很微小）
+            所以这里采用的是每一块肌肉单独做归一化
+
+        How：
+            获得数据中每个tag的非重复列表，对其中特定tag做循环，寻找对应的内容
+            相比较于使用dict的数据，使用检索更加的普适性和robust，而不是临时解决问题的方案
+
+        :param data:承接增加了肌肉tag和结构发生变化了的dataframe数据
+        :return:对每只小鼠每个LED所有肌肉做归一化的结果
+        '''
+        _,_,title_dict = get_title_list(data, mode=3)
+        print(title_dict)
+        # 使用itertool的笛卡尔积来做多重嵌套循环
+        # https://www.jianshu.com/p/57a6e1188f88
+        for leftorright_item, \
+            micenum_item, eleposition_item, \
+            lednum_item in product(
+                title_dict['LeftOrRight'],
+                title_dict['MiceNum'], title_dict['ElePosition'],
+                title_dict['LedNum']
+            ):
+            box_token = data[(data.LeftOrRight==leftorright_item)&
+                 (data.MiceNum == micenum_item) &(data.ElePosition==eleposition_item)&
+                 (data.LedNum == lednum_item)
+            ]
+            #  count every dataframe
+            box_token_max = box_token['Area'].max()
+            boxes_token_normalized = box_token['Area'].div(box_token_max)
+            print(boxes_token_normalized)
+        pass
+
 
     # def get_result_at_same_volt(self, csvfilepath):
     #     # 读取数据
@@ -940,7 +991,7 @@ class art_show:
 
 
 # 希望尝试的列表
-# - [] 相当于我对函数做了一个二级分装, 有条理的分装
+# - [ ] 相当于我对函数做了一个二级分装, 有条理的分装
 # - [ ] 找到什么是对状态的获取, 找到什么是功能的延伸
 
 
@@ -948,11 +999,12 @@ file_path_txt = 'C:/Users/zhenghao/Documents/Doctoral_program/LED/版本修回/�
 file_path_csv = 'C:/Users/HaoZ/Documents/mycode_git/git/my_python_code/111-data_ana_new/24_Area_result.csv'
 
 data = EMG_database('read csv file', txt_file_path=None, csv_file_path=file_path_csv,
-                    paint_raw=None, signal_scope=100, bandpass_num=[50, 300])  # 读取数据 # NOTE: signal_scope=100, bandpass_num=[100, 300]
+                    paint_raw=None, signal_scope=100,
+                    bandpass_num=[50, 300])  # 读取数据 # NOTE: signal_scope=100, bandpass_num=[100, 300]
 
 # 改变数据结构和归一化
 data_reshaped = structure_change(data.csv)  # 整理数据结构
-data_reshaped.normalized(data_reshaped.data)
+data_reshaped.normalized_new(data_reshaped.data)
 # data_heat_map_list, data_heat_map_log = data_reshaped.ready_4_heat_map()  # 获得数据内容
 
 # # 绘制heatmap
