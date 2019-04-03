@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="完成任务">
+    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="修正了bug, 去掉会重复的情况">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" afterDir="false" />
     </list>
     <ignored path="my_python_code.iws" />
@@ -45,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/病人刺激视频生成/main_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="82" column="56" selection-start-line="82" selection-start-column="56" selection-end-line="82" selection-end-column="56" />
+            <state relative-caret-position="435">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#667#693#0" />
@@ -373,7 +374,28 @@
       <option name="project" value="LOCAL" />
       <updated>1554277134368</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="修改了一些bug">
+      <created>1554278146377</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1554278146377</updated>
+    </task>
+    <task id="LOCAL-00018" summary="log中增加对帧数的计数作为参考">
+      <created>1554278215020</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1554278215020</updated>
+    </task>
+    <task id="LOCAL-00019" summary="修正了bug, 去掉会重复的情况">
+      <created>1554278866113</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1554278866113</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -438,7 +460,10 @@
     <MESSAGE value="新增病人刺激视频选择的代码" />
     <MESSAGE value="自己重新写了个class的代码, 用来自动生成合并视频, 但还是存在一些临时的问题, 如这里的分辨率等都是固定的, 对应不同的视频容易出bug, 这个以后再修改了" />
     <MESSAGE value="完成任务" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成任务" />
+    <MESSAGE value="修改了一些bug" />
+    <MESSAGE value="log中增加对帧数的计数作为参考" />
+    <MESSAGE value="修正了bug, 去掉会重复的情况" />
+    <option name="LAST_COMMIT_MESSAGE" value="修正了bug, 去掉会重复的情况" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/xiaodi/start.py">
@@ -740,8 +765,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/病人刺激视频生成/main_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="82" column="56" selection-start-line="82" selection-start-column="56" selection-end-line="82" selection-end-column="56" />
+        <state relative-caret-position="435">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#667#693#0" />

@@ -24,7 +24,7 @@ class movie_cutter:
                     str(TAG.tm_sec) + 'S'
         self.movie_name = savepath+filepath.split('/')[-1]+self.time+'.mp4'
 
-        self.black_pic = np.ones((540, 960), np.uint8).fill(150)
+        self.black_pic = np.ones((540, 960, 3), np.uint8)
 
     def logging(self, info):
         self.log = self.log + info
@@ -82,13 +82,16 @@ class movie_cutter:
         out = cv2.VideoWriter(self.movie_name, fourcc, 25.0, (960, 540))
 
         for item_first_floor in tqdm(self.material_pool):
-            [out.write(self.black_pic) for i in range(75)] # 黑色背景插入
+            # [out.write(self.black_pic) for i in range(75)] # 黑色背景插入
+            for i in range(75):
+                out.write(self.black_pic)
             for item_second_floor in item_first_floor:
                 out.write(item_second_floor)
                 frame_count += 1
         out.release()  # 导出视频时释放
         self.logging('--video_saved')
         self.logging('frame_count-'+str(frame_count))
+        print(np.shape(item_second_floor))
 
 
 savepath = '/Users/zhenghao/Desktop/'
