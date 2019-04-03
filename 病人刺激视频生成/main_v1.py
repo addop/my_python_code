@@ -22,9 +22,9 @@ class movie_cutter:
                     str(TAG.tm_hour) + 'H' + \
                     str(TAG.tm_min) + 'M' + \
                     str(TAG.tm_sec) + 'S'
-        self.movie_name = savepath+filepath.split('/')[-1]+self.time+'.mov'
+        self.movie_name = savepath+filepath.split('/')[-1]+self.time+'.mp4'
 
-        self.black_pic = np.ones((540, 960, 3), np.uint8).fill(150)
+        self.black_pic = np.ones((540, 960), np.uint8).fill(150)
 
     def logging(self, info):
         self.log = self.log + info
@@ -48,16 +48,17 @@ class movie_cutter:
             self.material_name_box.append(item)
         self.logging('--choose_file')
 
-        index_token = [random.randint(0, len(self.material_name_box)-1) for i in range(40)]
+        index_token = [random.randint(0, len(self.material_name_box)-1) for i in range(5)]
         for index in index_token:
             self.material_choose_box.append(self.material_name_box[index])
         self.logging('--random_file')
 
         cap = cv2.VideoCapture()
 
-        frame_box_token = []
+
         for material_choose in self.material_choose_box:
             cap.open(self.material_filepath + '/' + material_choose)
+            frame_box_token = []
             for n_frame in range(75):
                 nap, frame = cap.read()
                 frame_box_token.append(frame)
