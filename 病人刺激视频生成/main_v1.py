@@ -82,7 +82,10 @@ class movie_cutter:
         out = cv2.VideoWriter(self.movie_name, fourcc, 25.0, (960, 540))
 
         for item_first_floor in tqdm(self.material_pool):
-            [out.write(self.black_pic) for i in range(75)] # 黑色背景插入
+            # [out.write(self.black_pic) for i in range(75)] # 黑色背景插入
+            for i in range(75):
+                out.write(self.black_pic)
+                frame_count += 1
             for item_second_floor in item_first_floor:
                 out.write(item_second_floor)
                 frame_count += 1
