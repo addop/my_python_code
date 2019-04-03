@@ -1010,7 +1010,7 @@ class art_show:
         - [X] 获得title dict
         - [X] 设置多重循环, 取dataframe A (小鼠, led, 电压)
         - [X] 对Area列(第一列)sort
-        - [ ] 计算第一列的selectivity index, 结果覆盖在A sort完后的最大值那行首位
+        - [X] 计算第一列的selectivity index, 结果覆盖在A sort完后的最大值那行首位
         - [ ] 将计算完毕的A最大值那行
 
         :param data: 输入的data, 可以是归一化后的, 也可以没有归一化, 但必须要有muscle
@@ -1029,8 +1029,10 @@ class art_show:
                              (data.LedNum == lednum_item) &
                              (data.VoltNumList == voltnum_item)]
             box_sort = box_token.sort_values('Area', ascending=False)
-            si_token = selectivity_index_get(box_sort.iloc[0,0], box_sort.iloc[1,0])
-            print(si_token)
+            si_token = selectivity_index_get(box_sort.iloc[0, 0], box_sort.iloc[1, 0])
+            box_sort.iloc[0, 0] = si_token
+
+            print(box_sort)
         pass
 
 
