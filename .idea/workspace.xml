@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="完成selectivity index的计算和获取表格">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="新增病人刺激视频选择的代码">
+      <change afterPath="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py" beforeDir="false" afterPath="$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py" afterDir="false" />
     </list>
     <ignored path="my_python_code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,25 +17,42 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="3">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="279">
+                    <caret line="57" column="31" lean-forward="true" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+                    <folding>
+                      <element signature="e#0#10#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="my_python_code" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/111-data_ana_new/24_Area_result.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="72" lean-forward="true" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/111-data_ana_new/Fig5h_S11_codes.py">
+        <entry file="file://$PROJECT_DIR$/病人刺激视频生成/main_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="152" column="49" lean-forward="true" selection-start-line="152" selection-start-column="49" selection-end-line="152" selection-end-column="49" />
+            <state relative-caret-position="294">
+              <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#667#693#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -50,6 +69,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>index</find>
+      <find>time</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -70,6 +90,8 @@
         <option value="$PROJECT_DIR$/pachong/pachong.py" />
         <option value="$PROJECT_DIR$/pachong/test_v1.py" />
         <option value="$PROJECT_DIR$/111-data_ana_new/test_class.py" />
+        <option value="$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py" />
+        <option value="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" />
       </list>
     </option>
   </component>
@@ -89,7 +111,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -107,10 +128,16 @@
               <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
               <item name="pachong" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+              <item name="病人刺激视频生成" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -131,7 +158,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_class">
+  <component name="RunManager" selected="Python.main_v1">
+    <configuration name="main_v1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="my_python_code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/病人刺激视频生成" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="pachong" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="my_python_code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -197,6 +245,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main_v1" />
         <item itemvalue="Python.test_class" />
         <item itemvalue="Python.test_v1" />
         <item itemvalue="Python.pachong" />
@@ -305,20 +354,26 @@
       <option name="project" value="LOCAL" />
       <updated>1554259072494</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="新增病人刺激视频选择的代码">
+      <created>1554272517896</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1554272517896</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25885227" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
       <window_info id="Structure" order="1" weight="0.25274727" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -327,6 +382,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -367,7 +423,8 @@
     <MESSAGE value="完成了一部分的selectivity index的计算函数" />
     <MESSAGE value="完成了一部分的selectivity index的计算函数&#10;计算第一列的selectivity index, 结果覆盖在A sort完后的最大值那行首位" />
     <MESSAGE value="完成selectivity index的计算和获取表格" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成selectivity index的计算和获取表格" />
+    <MESSAGE value="新增病人刺激视频选择的代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增病人刺激视频选择的代码" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/xiaodi/start.py">
@@ -506,13 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/111-data_ana_new/24_Area_result.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="72" lean-forward="true" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/111-data_ana_new/test_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1849">
@@ -637,10 +687,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/time.pyi">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/111-data_ana_new/opencv_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="125" column="21" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/111-data_ana_new/Fig5h_S11_codes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="152" column="49" lean-forward="true" selection-start-line="152" selection-start-column="49" selection-end-line="152" selection-end-column="49" />
+        <state relative-caret-position="328">
+          <caret line="167" column="29" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/111-data_ana_new/24_Area_result.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="11" column="72" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="57" column="31" lean-forward="true" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/病人刺激视频生成/main_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#667#693#0" />
+          </folding>
         </state>
       </provider>
     </entry>
