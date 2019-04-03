@@ -48,7 +48,7 @@ class movie_cutter:
             self.material_name_box.append(item)
         self.logging('--choose_file')
 
-        index_token = [random.randint(0, len(self.material_name_box)-1) for i in range(5)]
+        index_token = [random.randint(0, len(self.material_name_box)-1) for i in range(40)]
         for index in index_token:
             self.material_choose_box.append(self.material_name_box[index])
         self.logging('--random_file')
@@ -91,10 +91,15 @@ class movie_cutter:
         self.logging('frame_count-'+str(frame_count))
         print(np.shape(item_second_floor))
 
+    def log_saving(self):
+        with open(self.movie_name+'.txt', 'w') as fileobject:  # 使用‘w’来提醒python用写入的方式打开
+            fileobject.write(self.log)
+
 
 savepath = '/Users/zhenghao/Desktop/'
 filepath = '/Volumes/HaoZHD4/hospitalData/病人刺激视频/实验视频/SEEG_stim_video'
 my_dog = movie_cutter(filepath, savepath)
 my_dog.get_material_pool()
 my_dog.merging()
-print(my_dog.log)
+my_dog.log_saving()
+# print(my_dog.log)
