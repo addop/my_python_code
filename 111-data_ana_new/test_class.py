@@ -16,7 +16,8 @@ from scipy import signal
 
 from itertools import product
 
-import warnings# 取消warning
+import warnings  # 取消warning
+
 warnings.filterwarnings("ignore")
 
 
@@ -696,7 +697,7 @@ class structure_change:
         :param data:承接增加了肌肉tag和结构发生变化了的dataframe数据
         :return:对每只小鼠每个LED所有肌肉做归一化的结果
         '''
-        _,_,title_dict = get_title_list(data, mode=3)
+        _, _, title_dict = get_title_list(data, mode=3)
         # 使用itertool的笛卡尔积来做多重嵌套循环
         # https://www.jianshu.com/p/57a6e1188f88
 
@@ -705,14 +706,14 @@ class structure_change:
         for leftorright_item, \
             micenum_item, eleposition_item, \
             lednum_item in product(
-                title_dict['LeftOrRight'],
-                title_dict['MiceNum'], title_dict['ElePosition'],
-                title_dict['LedNum']
-            ):
-            box_token = data[(data.LeftOrRight==leftorright_item)&
-                 (data.MiceNum == micenum_item) &(data.ElePosition==eleposition_item)&
-                 (data.LedNum == lednum_item)
-            ]
+            title_dict['LeftOrRight'],
+            title_dict['MiceNum'], title_dict['ElePosition'],
+            title_dict['LedNum']
+        ):
+            box_token = data[(data.LeftOrRight == leftorright_item) &
+                             (data.MiceNum == micenum_item) & (data.ElePosition == eleposition_item) &
+                             (data.LedNum == lednum_item)
+                             ]
             #  count every dataframe
             box_token_max = box_token['Area'].max()
             boxes_token_normalized = box_token['Area'].div(box_token_max)
@@ -720,7 +721,6 @@ class structure_change:
             box_new = pd.concat([box_new, box_token])
         self.data_normalized = box_new
         self.structure = self.structure + '--normalized'
-
 
     # def get_result_at_same_volt(self, csvfilepath):
     #     # 读取数据
@@ -927,7 +927,8 @@ class structure_change:
 class art_show:
     def __init__(self, data):
         self.data = data
-        print('*'*40)
+        self.select_ind_data = None
+        print('*' * 40)
         print('开始作画')
 
     # def Splt(self, xVal, pltTitle, pltScale=3, hueChoose=['False'],
@@ -1011,14 +1012,16 @@ class art_show:
         - [X] 设置多重循环, 取dataframe A (小鼠, led, 电压)
         - [X] 对Area列(第一列)sort
         - [X] 计算第一列的selectivity index, 结果覆盖在A sort完后的最大值那行首位
-        - [ ] 将计算完毕的A最大值那行
+        - [X] 将计算完毕的A最大值那行保留下来
 
         :param data: 输入的data, 可以是归一化后的, 也可以没有归一化, 但必须要有muscle
-        :return: 输出所有的SI(selectivity index)
+        :return: 为self.select_ind_data复制一个dataframe
         '''
-        def selectivity_index_get(num1, num2):
-            return abs(num1 - num2)/(num1 + num2)
+        data.reset_index()
+        si_box = data
 
+        def selectivity_index_get(num1, num2):
+            return abs(num1 - num2) / (num1 + num2)
 
         _, _, title_dict = get_title_list(data, mode=3)
         print(title_dict)
@@ -1030,11 +1033,15 @@ class art_show:
                              (data.VoltNumList == voltnum_item)]
             box_sort = box_token.sort_values('Area', ascending=False)
             si_token = selectivity_index_get(box_sort.iloc[0, 0], box_sort.iloc[1, 0])
-            box_sort.iloc[0, 0] = si_token
-
-            print(box_sort)
-        pass
-
+            box_sort_champion = box_sort.iloc[0:4, :]
+            box_sort_champion.iloc[3, 0] = si_token
+            box_sort_champion['OtherTags'].iloc[3] = 'selectivity_index'
+            box_sort_champion['OtherTags'].iloc[0] = 'first'
+            box_sort_champion['OtherTags'].iloc[1] = 'second'
+            box_sort_champion['OtherTags'].iloc[2] = 'third'
+            box_sort_champion['ChannelNum'].iloc[:] = 'sort'
+            si_box = pd.concat([si_box, box_sort_champion])
+        self.select_ind_data = si_box
 
 
 # 希望尝试的列表
@@ -1061,9 +1068,9 @@ data_reshaped.normalized_new(data_reshaped.data)
 # data_painted.paint_heatmap(data_painted.data, fig_title, fig_name)
 
 
-
 # 结束后打印log
 scientist = art_show(data_reshaped.data_normalized)
 scientist.selectivity_index(scientist.data)
+print(scientist.select_ind_data)
 
 print('Log: ', data_reshaped.structure)
