@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="使用for生成器来做黑色背景插入, 节省了代码行数">
-      <change beforePath="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" afterDir="false" />
+    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="让黑色背景的帧数也被算进log最后的count中">
+      <change afterPath="$PROJECT_DIR$/病人刺激视频生成/README.md" afterDir="false" />
     </list>
     <ignored path="my_python_code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,50 +15,34 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DockManager">
-    <window id="3">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="195">
-                    <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-                    <folding>
-                      <element signature="e#0#10#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FavoritesManager">
     <favorites_list name="my_python_code" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/病人刺激视频生成/main_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="104" column="19" lean-forward="true" selection-start-line="104" selection-start-column="19" selection-end-line="104" selection-end-column="19" />
+            <state relative-caret-position="75">
+              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
               <folding>
-                <element signature="e#667#693#0" />
-                <element signature="e#736#1950#0" />
+                <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#736#942#1" />
                 <element signature="e#1039#1186#0" />
                 <element signature="e#1736#2034#0" />
                 <element signature="e#1753#1822#0" />
-                <element signature="e#2121#2949#0" />
                 <element signature="e#1983#2072#1" />
-                <element signature="e#2543#2730#0" />
-                <element signature="e#2670#2730#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/病人刺激视频生成/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -416,19 +400,33 @@
       <option name="project" value="LOCAL" />
       <updated>1554279111457</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="新增存储log功能">
+      <created>1554279375752</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1554279375752</updated>
+    </task>
+    <task id="LOCAL-00023" summary="让黑色背景的帧数也被算进log最后的count中">
+      <created>1554279559694</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1554279559694</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
       <window_info id="Structure" order="1" weight="0.25274727" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -486,7 +484,9 @@
     <MESSAGE value="修正了bug, 去掉会重复的情况" />
     <MESSAGE value="解决了黑色背景无法写入的bug" />
     <MESSAGE value="使用for生成器来做黑色背景插入, 节省了代码行数" />
-    <option name="LAST_COMMIT_MESSAGE" value="使用for生成器来做黑色背景插入, 节省了代码行数" />
+    <MESSAGE value="新增存储log功能" />
+    <MESSAGE value="让黑色背景的帧数也被算进log最后的count中" />
+    <option name="LAST_COMMIT_MESSAGE" value="让黑色背景的帧数也被算进log最后的count中" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/xiaodi/start.py">
@@ -778,8 +778,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="300">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -788,20 +788,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/病人刺激视频生成/main_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="104" column="19" lean-forward="true" selection-start-line="104" selection-start-column="19" selection-end-line="104" selection-end-column="19" />
+        <state relative-caret-position="75">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
           <folding>
-            <element signature="e#667#693#0" />
-            <element signature="e#736#1950#0" />
+            <element signature="e#0#10#0" expanded="true" />
             <element signature="e#736#942#1" />
             <element signature="e#1039#1186#0" />
             <element signature="e#1736#2034#0" />
             <element signature="e#1753#1822#0" />
-            <element signature="e#2121#2949#0" />
             <element signature="e#1983#2072#1" />
-            <element signature="e#2543#2730#0" />
-            <element signature="e#2670#2730#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/病人刺激视频生成/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
