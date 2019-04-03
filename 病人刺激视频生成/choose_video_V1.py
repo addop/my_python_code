@@ -1,7 +1,5 @@
-import numpy as np
 import cv2
 import os
-import sys
 import random
 import time
 
