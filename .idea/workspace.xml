@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="新增病人刺激视频选择的代码">
-      <change afterPath="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py" beforeDir="false" afterPath="$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py" afterDir="false" />
+    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="完成任务">
+      <change beforePath="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" afterDir="false" />
     </list>
     <ignored path="my_python_code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,8 +23,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="279">
-                    <caret line="57" column="31" lean-forward="true" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+                  <state relative-caret-position="195">
+                    <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
                     <folding>
                       <element signature="e#0#10#0" expanded="true" />
                     </folding>
@@ -47,8 +45,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/病人刺激视频生成/main_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+            <state relative-caret-position="295">
+              <caret line="82" column="56" selection-start-line="82" selection-start-column="56" selection-end-line="82" selection-end-column="56" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#667#693#0" />
@@ -361,7 +359,21 @@
       <option name="project" value="LOCAL" />
       <updated>1554272517896</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="自己重新写了个class的代码, 用来自动生成合并视频, 但还是存在一些临时的问题, 如这里的分辨率等都是固定的, 对应不同的视频容易出bug, 这个以后再修改了">
+      <created>1554276988224</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1554276988224</updated>
+    </task>
+    <task id="LOCAL-00016" summary="完成任务">
+      <created>1554277134368</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1554277134368</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -424,7 +436,9 @@
     <MESSAGE value="完成了一部分的selectivity index的计算函数&#10;计算第一列的selectivity index, 结果覆盖在A sort完后的最大值那行首位" />
     <MESSAGE value="完成selectivity index的计算和获取表格" />
     <MESSAGE value="新增病人刺激视频选择的代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增病人刺激视频选择的代码" />
+    <MESSAGE value="自己重新写了个class的代码, 用来自动生成合并视频, 但还是存在一些临时的问题, 如这里的分辨率等都是固定的, 对应不同的视频容易出bug, 这个以后再修改了" />
+    <MESSAGE value="完成任务" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成任务" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/xiaodi/start.py">
@@ -716,8 +730,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="57" column="31" lean-forward="true" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -726,8 +740,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/病人刺激视频生成/main_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+        <state relative-caret-position="295">
+          <caret line="82" column="56" selection-start-line="82" selection-start-column="56" selection-end-line="82" selection-end-column="56" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#667#693#0" />

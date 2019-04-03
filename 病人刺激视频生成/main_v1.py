@@ -84,8 +84,10 @@ class movie_cutter:
             [out.write(self.black_pic) for i in range(75)] # 黑色背景插入
             for item_second_floor in item_first_floor:
                 out.write(item_second_floor)
+                frame_count += 1
         out.release()  # 导出视频时释放
         self.logging('--video_saved')
+        self.logging('frame_count-'+str(frame_count))
 
 
 savepath = '/Users/zhenghao/Desktop/'
