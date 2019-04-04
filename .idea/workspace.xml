@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="新增说明文档和todo list">
+    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="更新基金管理readme中计划">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chew_Count/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Chew_Count/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/股票投资/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/股票投资/main.py" afterDir="false" />
     </list>
     <ignored path="my_python_code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,9 +24,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/股票投资/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
+            <state split_layout="FIRST">
               <first_editor relative-caret-position="105">
-                <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+                <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
               </first_editor>
               <second_editor />
             </state>
@@ -35,10 +34,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="15">
+                <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/股票投资/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="76" selection-start-line="76" selection-end-line="76" />
+            <state relative-caret-position="315">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#20#39#0" expanded="true" />
               </folding>
@@ -49,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/股票投资/reference.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" selection-start-line="15" selection-end-line="19" selection-end-column="19" />
+            <state relative-caret-position="120">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="e#10#25#0" expanded="true" />
               </folding>
@@ -97,6 +108,8 @@
         <option value="$PROJECT_DIR$/CED/painting_20171017.py" />
         <option value="$PROJECT_DIR$/Chew_Count/README.md" />
         <option value="$PROJECT_DIR$/股票投资/main.py" />
+        <option value="$PROJECT_DIR$/股票投资/README.md" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -122,16 +135,6 @@
             <path>
               <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
               <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
-              <item name="111-data_ana_new" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
-              <item name="股票投资" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -453,19 +456,34 @@
       <option name="project" value="LOCAL" />
       <updated>1554280075320</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="网上copy了一段代码, 感觉这个函数很棒, 能够直接拿来用, 非常赞">
+      <created>1554357200650</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1554357200650</updated>
+    </task>
+    <task id="LOCAL-00026" summary="更新基金管理readme中计划">
+      <created>1554357618410</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1554357618410</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26495728" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26495728" />
       <window_info id="Structure" order="1" weight="0.25274727" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -501,7 +519,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="忘记什么更改了, 总之这是最新版本" />
     <MESSAGE value="修整了一些东西" />
     <MESSAGE value="删除了一些东西" />
     <MESSAGE value="合并了冲突的修改" />
@@ -525,7 +542,9 @@
     <MESSAGE value="新增存储log功能" />
     <MESSAGE value="让黑色背景的帧数也被算进log最后的count中" />
     <MESSAGE value="新增说明文档和todo list" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增说明文档和todo list" />
+    <MESSAGE value="网上copy了一段代码, 感觉这个函数很棒, 能够直接拿来用, 非常赞" />
+    <MESSAGE value="更新基金管理readme中计划" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新基金管理readme中计划" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -861,20 +880,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/股票投资/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="105">
-            <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/股票投资/reference.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="19" selection-end-column="19" />
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           <folding>
             <element signature="e#10#25#0" expanded="true" />
           </folding>
@@ -883,11 +892,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/股票投资/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="e#20#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/股票投资/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="105">
+            <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="15">
+            <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
