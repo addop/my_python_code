@@ -15,3 +15,10 @@
     - [ ] 获取目标基金的数据并保存csv(1年以上)
     - [ ] 模拟投资行为, 检验投资的最终结果并输出日志
     - [ ] 对日志进行统计分析
+    
+-------
+## 学习requests
+
+链接|内容|备注
+---|---|---
+[初步介绍了requests的大致功能](http://docs.python-requests.org/zh_CN/latest/user/quickstart.html)|可做为工具书来查看|

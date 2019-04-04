@@ -8,17 +8,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
 
-#指定默认字体
+# 指定默认字体
 matplotlib.rcParams['font.sans-serif'] = ['SimHei']
 matplotlib.rcParams['font.family']='sans-serif'
-#解决负号'-'显示为方块的问题
+# 解决负号'-'显示为方块的问题
 matplotlib.rcParams['axes.unicode_minus'] = False
+
 
 # 抓取网页
 def get_url(url, params=None, proxies=None):
     rsp = requests.get(url, params=params, proxies=proxies)
     rsp.raise_for_status()
     return rsp.text
+
 
 # 从网页抓取数据
 def get_fund_data(code,per=10,sdate='',edate='',proxies=None):
@@ -73,5 +75,11 @@ def get_fund_data(code,per=10,sdate='',edate='',proxies=None):
 
     return data
 
+
 data=get_fund_data('161725',per=49,sdate='2019-01-01',edate='2019-4-1')
-print(data)
+
+
+class Fund_manager:
+    def __init__(self):
+        pass
+    pass
