@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="更新readme">
-      <change afterPath="$PROJECT_DIR$/股票投资/myfund.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/股票投资/reference.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/股票投资/test.py" afterDir="false" />
+    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="完成读取csv的部分">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/股票投资/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/股票投资/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/股票投资/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/股票投资/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/股票投资/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/股票投资/test.py" afterDir="false" />
     </list>
     <ignored path="my_python_code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,15 +22,15 @@
     <favorites_list name="my_python_code" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.35669672">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/股票投资/README.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
                 <state split_layout="FIRST">
-                  <first_editor relative-caret-position="135">
-                    <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+                  <first_editor relative-caret-position="180">
+                    <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
                   </first_editor>
                   <second_editor />
                 </state>
@@ -45,22 +44,6 @@
                   <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
                   <folding>
                     <element signature="e#20#35#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/股票投资/test.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-                  <folding>
-                    <element signature="e#183#375#0" />
-                    <element signature="e#380#482#0" />
-                    <element signature="e#1291#2144#0" />
-                    <element signature="e#1494#1630#0" />
-                    <element signature="e#2358#2538#0" />
                   </folding>
                 </state>
               </provider>
@@ -84,30 +67,43 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/股票投资/test.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="120">
+                  <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/股票投资/main.py">
+            <entry file="file://$PROJECT_DIR$/股票投资/test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="348">
-                  <caret line="73" column="42" lean-forward="true" selection-start-line="69" selection-start-column="4" selection-end-line="73" selection-end-column="42" />
+                <state relative-caret-position="570">
+                  <caret line="105" column="17" lean-forward="true" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
                   <folding>
-                    <element signature="e#20#35#0" expanded="true" />
+                    <element signature="e#0#15#0" expanded="true" />
+                    <element signature="e#611#1145#0" />
+                    <element signature="e#1137#1210#1" />
+                    <element signature="e#1180#1305#0" />
+                    <element signature="e#1340#1424#0" />
+                    <element signature="e#1563#1725#0" />
+                    <element signature="e#1963#2331#0" />
+                    <element signature="e#2049#2258#0" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/股票投资/reference.py">
+            <entry file="file://$PROJECT_DIR$/Device_LED_ana/baggage_script.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="932">
-                  <caret line="81" column="32" lean-forward="true" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
-                  <folding>
-                    <element signature="e#10#25#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="60">
+                  <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
@@ -153,8 +149,8 @@
         <option value="$PROJECT_DIR$/CED/painting_20171017.py" />
         <option value="$PROJECT_DIR$/Chew_Count/README.md" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/股票投资/README.md" />
         <option value="$PROJECT_DIR$/股票投资/main.py" />
+        <option value="$PROJECT_DIR$/股票投资/README.md" />
         <option value="$PROJECT_DIR$/股票投资/test.py" />
       </list>
     </option>
@@ -182,6 +178,16 @@
             <path>
               <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
               <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+              <item name="Chew_Count" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+              <item name="Device_LED_ana" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
@@ -535,19 +541,33 @@
       <option name="project" value="LOCAL" />
       <updated>1554373060463</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="更新test.py和csv">
+      <created>1554707847078</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1554707847078</updated>
+    </task>
+    <task id="LOCAL-00030" summary="完成读取csv的部分">
+      <created>1554709550802</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1554709550802</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12026862" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12026862" />
       <window_info id="Structure" order="1" weight="0.25274727" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22780749" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22780749" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -584,8 +604,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="合并了冲突的修改" />
-    <MESSAGE value="归一化后的数据可以直接变成一个表格self.normalized" />
     <MESSAGE value="取消掉warning" />
     <MESSAGE value="更改因为修改了外围def导致的变量数目问题, 同时更新了log" />
     <MESSAGE value="可以正常输出normalized之后的图了" />
@@ -609,7 +627,9 @@
     <MESSAGE value="更新基金管理readme中计划" />
     <MESSAGE value="完善首页的readme" />
     <MESSAGE value="更新readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新readme" />
+    <MESSAGE value="更新test.py和csv" />
+    <MESSAGE value="完成读取csv的部分" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成读取csv的部分" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/xiaodi/start.py">
@@ -948,32 +968,12 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/股票投资/main_v1.py" />
-    <entry file="file://$PROJECT_DIR$/股票投资/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="135">
-            <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/股票投资/reference.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="932">
           <caret line="81" column="32" lean-forward="true" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
           <folding>
             <element signature="e#10#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/股票投资/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-          <folding>
-            <element signature="e#20#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -992,16 +992,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/股票投资/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
+          <folding>
+            <element signature="e#20#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Device_LED_ana/baggage_script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/股票投资/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="180">
+            <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/股票投资/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        <state relative-caret-position="570">
+          <caret line="105" column="17" lean-forward="true" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
           <folding>
-            <element signature="e#183#375#0" />
-            <element signature="e#380#482#0" />
-            <element signature="e#1291#2144#0" />
-            <element signature="e#1494#1630#0" />
-            <element signature="e#2358#2538#0" />
+            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#611#1145#0" />
+            <element signature="e#1137#1210#1" />
+            <element signature="e#1180#1305#0" />
+            <element signature="e#1340#1424#0" />
+            <element signature="e#1563#1725#0" />
+            <element signature="e#1963#2331#0" />
+            <element signature="e#2049#2258#0" />
           </folding>
         </state>
       </provider>

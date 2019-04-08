@@ -3,23 +3,6 @@ from bs4 import BeautifulSoup
 import re
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib
-
-
-def change_matplot_words():
-    # 指定默认字体
-    matplotlib.rcParams['font.sans-serif'] = ['SimHei']
-    matplotlib.rcParams['font.family']='sans-serif'
-    # 解决负号'-'显示为方块的问题
-    matplotlib.rcParams['axes.unicode_minus'] = False
-
-
-# 抓取网页
-def get_url(url, params=None, proxies=None):
-    rsp = requests.get(url, params=params, proxies=proxies)
-    rsp.raise_for_status()
-    return rsp.text
 
 
 class fund_manager:
@@ -41,7 +24,7 @@ class fund_manager:
         self.heads = []
         self.records = []
 
-        self.data = pd.DataFrame()
+        self.data = None
 
     def read_csv(self, csv_read_path):
         '''
@@ -51,6 +34,11 @@ class fund_manager:
         '''
         self.fund_num = pd.read_csv(csv_read_path, dtype='str')['MyFund']
 
+    def get_url(self, url, params=None, proxies=None):
+        rsp = requests.get(url, params=params, proxies=proxies)
+        rsp.raise_for_status()
+        return rsp.text
+
     def download(self, code, per, sdate, edate):
         self.code = code
         self.per = per
@@ -58,7 +46,7 @@ class fund_manager:
         self.edate = edate
         self.params = {'type': 'lsjz', 'code': code, 'page': 1, 'per': per, 'sdate': sdate, 'edate': edate}
         self.proxies = None
-        self.html = get_url(self.url, self.params, self.proxies)
+        self.html = self.get_url(self.url, self.params, self.proxies)
         self.soup = BeautifulSoup(self.html, 'html.parser')
 
     def get_pages(self):
@@ -77,7 +65,7 @@ class fund_manager:
             self.params = {'type': 'lsjz', 'code': self.code,
                            'page': page, 'per': self.per,
                            'sdate': self.sdate, 'edate': self.edate}
-            self.html = get_url(self.url, self.params, self.proxies)
+            self.html = self.get_url(self.url, self.params, self.proxies)
             self.soup = BeautifulSoup(self.html, 'html.parser')
 
             # 获取数据
@@ -100,20 +88,20 @@ class fund_manager:
 
     def to_dataframe(self):
         # 数据整理到dataframe
+        self.data = pd.DataFrame()
         np_records = np.array(self.records)
         for col, col_name in enumerate(self.heads):
             self.data[col_name] = np_records[:, col]
 
-    def to_csv(self):
-        pass
+    def save_to_csv(self):
+        self.data.to_csv('fund_' + self.code + '.csv')
 
 
 dog = fund_manager()
 dog.read_csv('/Users/zhenghao/Documents/git/my_python_code/股票投资/myfund.csv')
-# print(dog.fund_num)
-dog.download(dog.fund_num[0], 49, '2019-01-01', '2019-4-1')
+dog.download(dog.fund_num[3], 49, '2015-01-01', '2019-4-8')
 dog.get_pages()
 dog.get_heads()
 dog.get_info_from_pages()
 dog.to_dataframe()
-print(dog.data)
+dog.save_to_csv()
