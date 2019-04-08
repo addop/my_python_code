@@ -14,6 +14,7 @@ def change_matplot_words():
     # 解决负号'-'显示为方块的问题
     matplotlib.rcParams['axes.unicode_minus'] = False
 
+
 # 抓取网页
 def get_url(url, params=None, proxies=None):
     rsp = requests.get(url, params=params, proxies=proxies)
@@ -22,8 +23,35 @@ def get_url(url, params=None, proxies=None):
 
 
 class fund_manager:
-    def __init__(self, code, per, sdate, edate):
+    def __init__(self):
+
         self.url = 'http://fund.eastmoney.com/f10/F10DataApi.aspx'
+        self.code = None
+        self.per = None
+        self.sdate = None
+        self.edate = None
+        self.params = None
+        self.proxies = None
+        self.html = None
+        self.soup = None
+
+        self.fund_num = None
+
+        self.pages = None
+        self.heads = []
+        self.records = []
+
+        self.data = pd.DataFrame()
+
+    def read_csv(self, csv_read_path):
+        '''
+        输出基金的列表
+        :param csv_read_path: 基金存储的csv位置
+        :return: 返回基金列表
+        '''
+        self.fund_num = pd.read_csv(csv_read_path, dtype='str')['MyFund']
+
+    def download(self, code, per, sdate, edate):
         self.code = code
         self.per = per
         self.sdate = sdate
@@ -32,12 +60,6 @@ class fund_manager:
         self.proxies = None
         self.html = get_url(self.url, self.params, self.proxies)
         self.soup = BeautifulSoup(self.html, 'html.parser')
-
-        self.pages = None
-        self.heads = []
-        self.records = []
-
-        self.data = pd.DataFrame()
 
     def get_pages(self):
         pattern = re.compile(r'pages:(.*),')
@@ -86,7 +108,10 @@ class fund_manager:
         pass
 
 
-dog = fund_manager('161725', 49, '2019-01-01', '2019-4-1')
+dog = fund_manager()
+dog.read_csv('/Users/zhenghao/Documents/git/my_python_code/股票投资/myfund.csv')
+# print(dog.fund_num)
+dog.download(dog.fund_num[0], 49, '2019-01-01', '2019-4-1')
 dog.get_pages()
 dog.get_heads()
 dog.get_info_from_pages()
