@@ -30,9 +30,9 @@ def get_fund_data(code,per=10,sdate='',edate='',proxies=None):
     soup = BeautifulSoup(html, 'html.parser')
 
     # 获取总页数
-    pattern=re.compile(r'pages:(.*),')
-    result=re.search(pattern,html).group(1)
-    pages=int(result)
+    pattern = re.compile(r'pages:(.*),')
+    result = re.search(pattern, html).group(1)
+    pages = int(result)
 
     # 获取表头
     heads = []
@@ -76,10 +76,29 @@ def get_fund_data(code,per=10,sdate='',edate='',proxies=None):
     return data
 
 
-data=get_fund_data('161725',per=49,sdate='2019-01-01',edate='2019-4-1')
+data=get_fund_data('161725', per=49, sdate='2019-01-01', edate='2019-4-1')
 
 
 class Fund_manager:
     def __init__(self):
+        self.per = None
+        self.sdate = ''
+        self.edate = ''
+        self.proxies = None
+        self.code = None
+        self.text = None
+
+        self.url = 'http://fund.eastmoney.com/f10/F10DataApi.aspx'
+        self.params = {'type': 'lsjz', 'code': self.code,
+                       'page': 1, 'per': self.per, 'sdate': self.sdate,
+                       'edate': self.edate}
+
+    def get_url(self):
+        rsp = requests.get(self.url, params=self.params, proxies=self.proxies)
+        rsp.raise_for_status()
+        self.text = rsp.text
+
+    def get_fund_data(self):
+        self.get_url()
         pass
     pass
