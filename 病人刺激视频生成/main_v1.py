@@ -94,6 +94,32 @@ class movie_cutter:
         self.logging('frame_count-'+str(frame_count))
         print(np.shape(item_second_floor))
 
+    def save_single_movie(self):
+        '''
+        将原本需要merge起来的视频单独写成独立的视频并命名和输出log
+        :return: 保存独立的视频并输出log
+        '''
+        frame_count = 0  # 设立一个对总帧数做计数的参数
+        movie_count = 0  # 设立一个对movie做计数的东西
+        print('独立输出视频 --> 视频个数: ', len(self.material_pool))
+
+        fourcc = cv2.VideoWriter_fourcc(*'XVID')
+
+        for item_first_floor in tqdm(self.material_pool):
+            out = cv2.VideoWriter(self.movie_name.split('.')[0]+'_'+str(movie_count)+'.mp4', fourcc, 25.0, (960, 540))
+            movie_count += 1
+            for i in range(75):
+                out.write(self.black_pic)
+                frame_count += 1
+            for item_second_floor in item_first_floor:
+                out.write(item_second_floor)
+                frame_count += 1
+            out.release()  # 导出视频时释放
+        self.logging('--single_video_saved')
+        self.logging('frame_count-' + str(frame_count))
+
+
+
     def log_saving(self):
         with open(self.movie_name+'.txt', 'w') as fileobject:  # 使用‘w’来提醒python用写入的方式打开
             fileobject.write(self.log)
