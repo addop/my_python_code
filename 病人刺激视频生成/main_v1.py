@@ -5,6 +5,9 @@ import random
 import time
 from tqdm import tqdm
 
+import warnings  # 取消warning
+warnings.filterwarnings("ignore")
+
 
 class movie_cutter:
     def __init__(self, filepath, savepath):
@@ -129,6 +132,7 @@ savepath = '/Users/zhenghao/Desktop/'
 filepath = '/Volumes/HaoZHD4/hospitalData/病人刺激视频/实验视频/SEEG_stim_video'
 my_dog = movie_cutter(filepath, savepath)
 my_dog.get_material_pool()
-my_dog.merging()
+my_dog.save_single_movie()
+# my_dog.merging()
 my_dog.log_saving()
 # print(my_dog.log)
