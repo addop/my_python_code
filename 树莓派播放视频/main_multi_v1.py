@@ -12,6 +12,10 @@ import threading
 import RPi.GPIO as GPIO
 import time
 
+"""
+- [ ] 在CED台子上检测多次视频前后时间差异或打印时间差
+"""
+
 
 class high_signal:
     def __init__(self, channels):
