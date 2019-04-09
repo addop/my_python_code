@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="尝试写一些给病人看视频的代码和调试工具">
-      <change beforePath="$PROJECT_DIR$/ssh数据传输/main_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/ssh数据传输/main_v1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/树莓派播放视频/main_multi_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/树莓派播放视频/main_multi_v1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/树莓派播放视频/main_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/树莓派播放视频/main_v1.py" afterDir="false" />
+    <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="更新病人刺激的代码">
+      <change afterPath="$PROJECT_DIR$/树莓派播放视频/README.md" afterDir="false" />
     </list>
     <ignored path="my_python_code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +23,27 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/树莓派播放视频/main_multi_v1.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="705">
-                    <caret line="97" column="50" lean-forward="true" selection-start-line="97" selection-start-column="50" selection-end-line="97" selection-end-column="50" />
+                  <state relative-caret-position="315">
+                    <caret line="96" column="7" lean-forward="true" selection-start-line="96" selection-start-column="7" selection-end-line="96" selection-end-column="7" />
                     <folding>
                       <element signature="n#!!doc" />
-                      <element signature="e#40#71#0" expanded="true" />
+                      <element signature="e#196#204#1" />
+                      <element signature="e#220#737#0" />
+                      <element signature="e#258#447#0" />
+                      <element signature="e#484#515#0" />
+                      <element signature="e#553#583#0" />
+                      <element signature="e#614#628#0" />
+                      <element signature="e#666#737#0" />
+                      <element signature="e#765#1601#0" />
+                      <element signature="e#802#974#0" />
+                      <element signature="e#1013#1049#0" />
+                      <element signature="e#1088#1384#0" />
+                      <element signature="e#1189#1323#0" />
+                      <element signature="e#1429#1547#0" />
+                      <element signature="e#1583#1601#0" />
+                      <element signature="e#1730#1759#0" />
+                      <element signature="e#1986#2082#0" />
+                      <element signature="e#2186#2217#0" />
                     </folding>
                   </state>
                 </provider>
@@ -67,11 +81,21 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ssh数据传输/main_v1.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="250">
               <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/树莓派播放视频/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -119,8 +143,8 @@
         <option value="$PROJECT_DIR$/股票投资/README.md" />
         <option value="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" />
         <option value="$PROJECT_DIR$/树莓派播放视频/main_v1.py" />
-        <option value="$PROJECT_DIR$/树莓派播放视频/main_multi_v1.py" />
         <option value="$PROJECT_DIR$/ssh数据传输/main_v1.py" />
+        <option value="$PROJECT_DIR$/树莓派播放视频/main_multi_v1.py" />
       </list>
     </option>
   </component>
@@ -562,18 +586,33 @@
       <option name="project" value="LOCAL" />
       <updated>1554797157727</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="更新病人刺激的代码">
+      <created>1554799554455</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1554799554455</updated>
+    </task>
+    <task id="LOCAL-00036" summary="更新病人刺激的代码">
+      <created>1554799616268</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1554799616268</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="839" height="1027" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49796748" visible="true" weight="0.25345045" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49796748" visible="true" weight="0.25345045" />
       <window_info id="Structure" order="1" weight="0.25274727" />
       <window_info id="Favorites" order="2" sideWeight="0.5020325" side_tool="true" weight="0.24717692" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47379678" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.47379678" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -650,7 +689,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="挖坑, 新增计算selectivity index的函数在'画家'中" />
     <MESSAGE value="完成了一部分的selectivity index的计算函数" />
     <MESSAGE value="完成了一部分的selectivity index的计算函数&#10;计算第一列的selectivity index, 结果覆盖在A sort完后的最大值那行首位" />
     <MESSAGE value="完成selectivity index的计算和获取表格" />
@@ -675,7 +713,8 @@
     <MESSAGE value="更新todo" />
     <MESSAGE value="对每个随机出来的视频生成单独播放的顺序视频文件, 方便树莓派做调用" />
     <MESSAGE value="尝试写一些给病人看视频的代码和调试工具" />
-    <option name="LAST_COMMIT_MESSAGE" value="尝试写一些给病人看视频的代码和调试工具" />
+    <MESSAGE value="更新病人刺激的代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新病人刺激的代码" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/xiaodi/start.py">
@@ -1004,21 +1043,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/树莓派播放视频/main_multi_v1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="97" column="50" lean-forward="true" selection-start-line="97" selection-start-column="50" selection-end-line="97" selection-end-column="50" />
-          <folding>
-            <element signature="n#!!doc" />
-            <element signature="e#40#71#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ssh数据传输/main_v1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/树莓派播放视频/main_multi_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="96" column="7" lean-forward="true" selection-start-line="96" selection-start-column="7" selection-end-line="96" selection-end-column="7" />
+          <folding>
+            <element signature="n#!!doc" />
+            <element signature="e#196#204#1" />
+            <element signature="e#220#737#0" />
+            <element signature="e#258#447#0" />
+            <element signature="e#484#515#0" />
+            <element signature="e#553#583#0" />
+            <element signature="e#614#628#0" />
+            <element signature="e#666#737#0" />
+            <element signature="e#765#1601#0" />
+            <element signature="e#802#974#0" />
+            <element signature="e#1013#1049#0" />
+            <element signature="e#1088#1384#0" />
+            <element signature="e#1189#1323#0" />
+            <element signature="e#1429#1547#0" />
+            <element signature="e#1583#1601#0" />
+            <element signature="e#1730#1759#0" />
+            <element signature="e#1986#2082#0" />
+            <element signature="e#2186#2217#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/树莓派播放视频/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
