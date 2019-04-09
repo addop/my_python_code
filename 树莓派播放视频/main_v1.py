@@ -69,7 +69,6 @@ class video_and_tag:
     def stop_movie(self):
         self.player.quit()
 
-sleep(5) # 等待5秒后开始刺激
 
 signal = high_signal([7])  # 7号可以驱动LED点亮
 video = video_and_tag(fl_path='/media/pi/KINGSTON/movie_bag')

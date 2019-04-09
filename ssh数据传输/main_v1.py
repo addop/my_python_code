@@ -49,8 +49,10 @@ ccc = data_transfer('192.168.1.118', 'pi', 'Zh19930924')
 
 # ccc.sftp_transfer('Downloads/') # 这里前面不用加~
 
-ccc.ssh_communication('cd /etc/init.d; '
-                      'sudo chmod 777 Auto_Start_Test; '
-                      'sudo update-rc.d Auto_Start_Test defaults; '
-                      'sudo service Auto_Start_Test start; '
-                      'sudo reboot')
+# ccc.ssh_communication('cd /etc/init.d; '
+#                       'sudo chmod 777 Auto_Start_Test; '
+#                       'sudo update-rc.d Auto_Start_Test defaults; '
+#                       'sudo service Auto_Start_Test start; '
+#                       'sudo reboot')
+
+ccc.ssh_communication('cd ~/Downloads; python3 main_multi_v1.py')

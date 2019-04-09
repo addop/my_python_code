@@ -74,15 +74,21 @@ video = video_and_tag(fl_path='/media/pi/KINGSTON/movie_bag')
 video.get_file_pool()
 
 
-def send_signal_at_6_sec():
-    for file in video.movie_pool:
-        signal.on(signal.channels[0])
-        sleep(1)
-        signal.off(signal.channels[0])
-        sleep(5)
-    # 传输完结, 终结
-    signal.clean()
+# def send_signal_at_6_sec():
+#     for file in video.movie_pool:
+#         signal.on(signal.channels[0])
+#         sleep(1)
+#         signal.off(signal.channels[0])
+#         sleep(5)
+#     # 传输完结, 终结
+#     signal.clean()
 
+def send_signal_at_6_sec():
+    signal.on(signal.channels[0])
+    sleep(1)
+    signal.off(signal.channels[0])
+    sleep(5)
+    signal.clean()
 
 # 开始多线程
 threads = []
@@ -93,10 +99,12 @@ t2 = threading.Thread(target=send_signal_at_6_sec)
 threads.append(t2)
 
 for t in threads:
-    t.setDaemon(True)
+    t.setDaemon(False)
     t.start()
 
 t.join()
+
+send_signal_at_6_sec()
 
 
 
