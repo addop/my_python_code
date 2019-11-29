@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="update">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/finance/main_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/my_python_code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/my_python_code.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="my_python_code.iws" />
@@ -19,7 +23,20 @@
     <favorites_list name="my_python_code" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/finance/main_v1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="12" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,6 +49,7 @@
     <findStrings>
       <find>index</find>
       <find>time</find>
+      <find>csv</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -57,7 +75,6 @@
         <option value="$PROJECT_DIR$/CED/painting_20171017.py" />
         <option value="$PROJECT_DIR$/Chew_Count/README.md" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/股票投资/main.py" />
         <option value="$PROJECT_DIR$/股票投资/test.py" />
         <option value="$PROJECT_DIR$/病人刺激视频生成/main_v1.py" />
         <option value="$PROJECT_DIR$/树莓派播放视频/main_v1.py" />
@@ -70,6 +87,8 @@
         <option value="$PROJECT_DIR$/爬虫/README.md" />
         <option value="$PROJECT_DIR$/爬虫/study_1.py" />
         <option value="$PROJECT_DIR$/陈玉晴刺激/20190702.py" />
+        <option value="$PROJECT_DIR$/股票投资/main.py" />
+        <option value="$PROJECT_DIR$/finance/main_v1.py" />
       </list>
     </option>
   </component>
@@ -79,9 +98,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="237" />
-    <option name="y" value="85" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="269" />
+    <option name="y" value="97" />
     <option name="width" value="1920" />
     <option name="height" value="1120" />
   </component>
@@ -100,7 +119,47 @@
             <path>
               <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
               <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
-              <item name="陈玉晴刺激" type="462c0819:PsiDirectoryNode" />
+              <item name="111-data_ana_new" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+              <item name="CED" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+              <item name="Chew" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+              <item name="Chew_Count" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+              <item name="Device_LED_ana" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+              <item name="finance" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+              <item name="ssh数据传输" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+              <item name="病人刺激视频生成" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my_python_code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_python_code" type="462c0819:PsiDirectoryNode" />
+              <item name="股票投资" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -127,7 +186,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.20190702">
+  <component name="RunManager" selected="Python.main_v1 (2)">
     <configuration name="20190702" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="my_python_code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -191,6 +250,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="main_v1 (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="my_python_code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finance" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finance/main_v1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main_v1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="my_python_code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -212,34 +292,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="my_python_code" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/股票投资" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/股票投资/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main_v1 (2)" />
         <item itemvalue="Python.20190702" />
         <item itemvalue="Python.joinquant_v1" />
         <item itemvalue="Python.main_v1 (1)" />
         <item itemvalue="Python.main_v1" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -538,19 +597,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1120" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="970" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49796748" visible="true" weight="0.11661342" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49796748" visible="true" weight="0.13675214" />
       <window_info id="Structure" order="1" weight="0.25274727" />
       <window_info id="Favorites" order="2" sideWeight="0.5020325" side_tool="true" weight="0.24717692" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.47373542" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21412301" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.42396313" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.33940774" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32879376" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Python Console" order="10" />
@@ -650,52 +710,19 @@
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/xiaodi/ana_openCV.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="83" column="9" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xiaodi/README.md">
+      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
           <second_editor />
         </state>
       </provider>
-      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../../Doctoral_program/ImitationGame/IW_InfinityWar/新台子测试gonogo_led/code/Untitled.ipynb" />
-    <entry file="file://$PROJECT_DIR$/小鼠和蟋蟀/code/videoCut_V1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/小鼠和蟋蟀/code/reference.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-597">
-          <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/小鼠和蟋蟀/code/gratingCreat_V1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/小鼠和蟋蟀/code/videoCut_V1.py" />
+    <entry file="file://$PROJECT_DIR$/小鼠和蟋蟀/code/reference.py" />
+    <entry file="file://$PROJECT_DIR$/小鼠和蟋蟀/code/gratingCreat_V1.py" />
     <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/start.py" />
     <entry file="file://$PROJECT_DIR$/pachong/pachong.py">
@@ -718,28 +745,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/111-data_ana_new/test123_norm.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../pythonfile/PycharmProjects/dataAna/venv/lib/python3.6/site-packages/pandas/core/internals/managers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="1973" column="24" lean-forward="true" selection-start-line="1973" selection-start-column="24" selection-end-line="1973" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/111-data_ana_new/test123_norm.png" />
+    <entry file="file://$PROJECT_DIR$/../../pythonfile/PycharmProjects/dataAna/venv/lib/python3.6/site-packages/pandas/core/internals/managers.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/time.pyi">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/111-data_ana_new/opencv_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="125" column="21" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/111-data_ana_new/Fig5h_S11_codes.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -752,16 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="11" column="72" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -836,16 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/股票投资/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-          <folding>
-            <element signature="e#20#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -867,61 +856,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../pythonfile/PycharmProjects/dataAna/venv/lib/python3.6/site-packages/paramiko/kex_ecdh_nist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/股票投资/000988.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="46" lean-forward="true" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/股票投资/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="82" column="22" lean-forward="true" selection-start-line="82" selection-start-column="22" selection-end-line="82" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../pythonfile/PycharmProjects/dataAna/venv/lib/python3.6/site-packages/paramiko/sftp_client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="731" column="47" selection-start-line="731" selection-start-column="47" selection-end-line="731" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../pythonfile/PycharmProjects/dataAna/venv/lib/python3.6/site-packages/paramiko/agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../pythonfile/PycharmProjects/dataAna/venv/lib/python3.6/site-packages/paramiko/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/病人刺激视频生成/main_v1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="41" lean-forward="true" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../pythonfile/PycharmProjects/dataAna/venv/lib/python3.6/site-packages/paramiko/kex_ecdh_nist.py" />
+    <entry file="file://$PROJECT_DIR$/股票投资/000988.csv" />
+    <entry file="file://$PROJECT_DIR$/../../pythonfile/PycharmProjects/dataAna/venv/lib/python3.6/site-packages/paramiko/sftp_client.py" />
+    <entry file="file://$PROJECT_DIR$/../../pythonfile/PycharmProjects/dataAna/venv/lib/python3.6/site-packages/paramiko/agent.py" />
+    <entry file="file://$PROJECT_DIR$/../../pythonfile/PycharmProjects/dataAna/venv/lib/python3.6/site-packages/paramiko/__init__.py" />
     <entry file="file://$PROJECT_DIR$/树莓派播放视频/main_multi_v1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -957,13 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ssh数据传输/main_v1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/111-data_ana_new/test_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -990,16 +922,6 @@
             <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/陈玉晴刺激/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="78" column="25" lean-forward="true" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1033,13 +955,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/股票投资/joinquant_v1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/爬虫/study_1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -1050,10 +965,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/病人刺激视频生成/choose_video_V1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/病人刺激视频生成/main_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="106" column="32" selection-start-line="106" selection-start-column="32" selection-end-line="106" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/股票投资/joinquant_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/股票投资/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="34" column="73" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/股票投资/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="e#20#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/陈玉晴刺激/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/陈玉晴刺激/20190702.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="31" column="23" lean-forward="true" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+        <state relative-caret-position="382">
+          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh数据传输/main_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/111-data_ana_new/opencv_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="125" column="21" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finance/main_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="12" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
