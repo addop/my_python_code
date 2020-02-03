@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9edf80ec-ed50-4ef7-b71a-7f98e9ba967f" name="Default" comment="update">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/finance/main_v1.py" afterDir="false" />
+>>>>>>> 6f34a6ddd8a4433db40ea0e14add6aec4e712740
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/my_python_code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/my_python_code.iml" afterDir="false" />
+>>>>>>> 24b8fbe31d3fedf23595851c060ad8cd6386ebdb
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/股票投资/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/股票投资/main.py" afterDir="false" />
     </list>
-    <ignored path="my_python_code.iws" />
-    <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +27,12 @@
   <component name="FavoritesManager">
     <favorites_list name="my_python_code" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
+>>>>>>> 6f34a6ddd8a4433db40ea0e14add6aec4e712740
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -45,6 +57,8 @@
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -77,12 +91,16 @@
       </list>
     </option>
   </component>
+>>>>>>> 6f34a6ddd8a4433db40ea0e14add6aec4e712740
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+<<<<<<< HEAD
+  <component name="ProjectId" id="1TV9NF1BTjSo7RfqkXRmHfgmuHz" />
+=======
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="269" />
     <option name="y" value="97" />
@@ -158,6 +176,7 @@
       <pane id="Scope" />
     </panes>
   </component>
+>>>>>>> 6f34a6ddd8a4433db40ea0e14add6aec4e712740
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -176,7 +195,11 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
+  <component name="RunManager" selected="Python.main">
+=======
   <component name="RunManager" selected="Python.main_v1 (2)">
+>>>>>>> 6f34a6ddd8a4433db40ea0e14add6aec4e712740
     <configuration name="20190702" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="my_python_code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -219,7 +242,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main_v1 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="my_python_code" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -227,11 +250,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ssh数据传输" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/股票投资" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ssh数据传输/main_v1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/股票投资/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -240,7 +263,11 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+<<<<<<< HEAD
+    <configuration name="main_v1 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
     <configuration name="main_v1 (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> 6f34a6ddd8a4433db40ea0e14add6aec4e712740
       <module name="my_python_code" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -248,11 +275,19 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+<<<<<<< HEAD
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ssh数据传输" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ssh数据传输/main_v1.py" />
+=======
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finance" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finance/main_v1.py" />
+>>>>>>> 6f34a6ddd8a4433db40ea0e14add6aec4e712740
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -284,7 +319,11 @@
     </configuration>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
+        <item itemvalue="Python.main" />
+=======
         <item itemvalue="Python.main_v1 (2)" />
+>>>>>>> 6f34a6ddd8a4433db40ea0e14add6aec4e712740
         <item itemvalue="Python.20190702" />
         <item itemvalue="Python.joinquant_v1" />
         <item itemvalue="Python.main_v1 (1)" />
@@ -593,6 +632,8 @@
     <option name="localTasksCounter" value="42" />
     <servers />
   </component>
+<<<<<<< HEAD
+=======
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="970" extended-state="6" />
     <layout>
@@ -619,6 +660,7 @@
       <window_info anchor="right" id="R Packages" order="5" />
     </layout>
   </component>
+>>>>>>> 6f34a6ddd8a4433db40ea0e14add6aec4e712740
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
       <list>
@@ -635,20 +677,7 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
@@ -705,6 +734,8 @@
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/小鼠和蟋蟀/code/videoCut_V1.py" />
     <entry file="file://$PROJECT_DIR$/小鼠和蟋蟀/code/reference.py" />
@@ -1066,4 +1097,5 @@
       </provider>
     </entry>
   </component>
+>>>>>>> 6f34a6ddd8a4433db40ea0e14add6aec4e712740
 </project>
