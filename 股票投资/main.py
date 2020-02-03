@@ -77,6 +77,7 @@ def get_fund_data(code,per=10,sdate='',edate='',proxies=None):
 
 
 data=get_fund_data('161725', per=49, sdate='2019-01-01', edate='2019-4-1')
+print(data)
 
 
 class Fund_manager:
@@ -92,6 +93,7 @@ class Fund_manager:
         self.params = {'type': 'lsjz', 'code': self.code,
                        'page': 1, 'per': self.per, 'sdate': self.sdate,
                        'edate': self.edate}
+        self.soup = None
 
     def get_url(self):
         rsp = requests.get(self.url, params=self.params, proxies=self.proxies)
@@ -100,5 +102,6 @@ class Fund_manager:
 
     def get_fund_data(self):
         self.get_url()
+        self.soup = BeautifulSoup(self.text, 'html.parser')
         pass
     pass
