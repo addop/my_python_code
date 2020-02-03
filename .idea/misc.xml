@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.6 (ai_1)" project-jdk-type="Python SDK" />
+=======
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.7 (data_ana_env)" project-jdk-type="Python SDK" />
+>>>>>>> 6f34a6ddd8a4433db40ea0e14add6aec4e712740
   <component name="PyCharmProfessionalAdvertiser">
     <option name="shown" value="true" />
   </component>
